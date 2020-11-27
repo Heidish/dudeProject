@@ -9,12 +9,12 @@ import javax.persistence.*;
 @Entity
 public class user {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_no;
     private String user_id;
     private String user_pw;
     private String user_name;
-    private String user_mobile;
+    private int user_mobile;
     private String user_address_gu;
     private String user_address_dong;
     private String user_address_street;

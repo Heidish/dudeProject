@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DUDE</title>
+
+<!-- 부트스트랩 css 사용 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/commons.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/.css">
+
+<style>
+    .qr {
+        height: 400px;
+        padding-top: 50px;
+    }
+    .qr-ttl {
+        padding-top: 130px;
+        padding-right: 50px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .qr-img1 {
+        height: 300px;
+    }
+    .info-ttl {
+        width: 80px;
+        margin: 10px;
+    }
+    .info-cnt {
+        width: 200px;
+        margin: 10px;
+    }
+    .btn {
+        height: 100px;
+        padding-top: 60px;
+    }
+    .btn-style {
+        border: none;
+        background-color: rgb(226, 225, 225);
+        border-radius: 6px;
+    }
+</style>
+<body>
+<div id="wrap">
+
+    <!-- 상단 바 -->
+    <div id="top-bar">
+        <img class="logo" src="/images/logo.png"/>
+    </div>
+
+    <!-- contents 영역 -->
+    <div class="contents">
+        <!-- 이쯤 form 태그 위치해야 하는데, 페이지 이동 쉽게 보여주려고 지금 안넣었음 -->
+            <!-- 상단 QR 영역 -->
+            <div class="qr flex">
+                <label class="qr-ttl">
+                    나의 QR
+                </label>
+                <div class="qr-img">
+                    <img class="qr-img1" src="/images/qr.png"/>
+                </div>
+            </div>
+            <!-- 하단 정보 영역 -->
+            <div class="info">
+                <div class="info-box flex">
+                    <label class="info-ttl">
+                        아이디
+                    </label>
+                    <div class="info-cnt">
+                        testuser
+                    </div>
+                </div>
+                <div class="info-box flex">
+                    <label class="info-ttl">
+                        비밀번호
+                    </label>
+                    <div class="info-cnt">
+                        <button type="button" class="btn-style" onclick="location.href='updateUserPw.html'">비밀번호 수정</button>
+                    </div>
+                </div>
+                <div class="info-box flex">
+                    <label class="info-ttl">
+                        전화번호
+                    </label>
+                    <div class="info-cnt">
+                        010-9974-4914
+                        <button type="button" class="btn-style" onclick="location.href='updateUserMobile.html'">수정</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 하단 확인 버튼 -->
+            <div class="btn flex">
+                <button type="bytton" class="btn-style" onclick="location.href='mainPage.html'">확인</button>
+            </div>
+    </div>
+
+    <!-- footer 영역 -->
+    <div id="footer">
+        Copyright @ DUDE
+    </div>
+    </div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
+</body>
+</html>

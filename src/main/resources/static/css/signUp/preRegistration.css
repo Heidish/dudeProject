@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+}
+
+/* 전체 감싸는 DIV */
+#wrap {
+    max-width: 1280px;
+    min-width: 318px;
+}
+/* 상단 바 */
+#top-bar {
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(34, 139, 34);
+}
+/* 상단 바 DUDE 로고 */
+.logo {
+    height: 80px;
+    display: block;
+    margin: auto;
+}
+/* contents 영역 */
+.contents {
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    margin: auto;
+}
+/* footer 영역 */
+#footer {
+    position: absolute;
+    bottom: 0px;
+    height: 50PX;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+    background-color: rgb(34, 139, 34);
+    border: 1px solid gray;
+}
+/* div flex 영역 */
+.flex {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}

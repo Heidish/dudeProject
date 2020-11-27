@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DUDE</title>
+
+<!-- 부트스트랩 css 사용 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/commons.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/.css">
+
+<style>
+    .box {
+        margin-top: 100px;
+    }
+    .btn-style {
+        width: 300px;
+        height: 70px;
+        background-color: rgb(255, 187, 0);
+        border-radius: 4px;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .announce1 {
+        margin: auto;
+        margin-top: 50px;
+        width: 300px;
+        height: 30px;
+        font-size: 17px;
+        font-weight: bold;
+        color: gray;
+        text-align: left;
+    }
+    .announce2 {
+        margin: auto;
+        width: 300px;
+        height: 30px;
+        font-size: 15px;
+        color: gray;
+        text-align: left;
+    }
+    .kakao-img {
+        margin-top: 50px;
+        height: 43px;
+    }
+</style>
+<body>
+<div id="wrap">
+
+    <!-- 상단 바 -->
+    <div id="top-bar">
+        <img class="logo" src="/images/logo.png"/>
+    </div>
+
+    <!-- contents 영역 -->
+    <div class="contents">
+        <div class="box flex">
+            <button type="button" class="btn-style" onclick="location.href='registration.html'">간편 회원가입</button>
+        </div>
+        <div class="announce1">
+            SNS 회원가입
+        </div>
+        <div class="announce2">
+            만 18세 이상만 가입이 가능합니다.
+        </div>
+        <div class="sign1 flex">
+            <!-- 아래 이미지 대신 카카오 로그인 api 삽입 예정 -->
+            <img class="kakao-img" src="/images/kakao_login.png"/>
+        </div>
+    </div>
+    
+    <!-- footer 영역 -->
+    <div id="footer">
+        Copyright @ DUDE
+    </div>
+    </div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
+</body>
+</html>

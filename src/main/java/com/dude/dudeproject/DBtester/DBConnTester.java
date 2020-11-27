@@ -28,5 +28,4 @@ public class DBConnTester {
     private String user_address_street;
     private String user_address_city;
 
-
 }

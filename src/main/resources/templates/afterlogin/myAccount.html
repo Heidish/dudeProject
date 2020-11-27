@@ -42,25 +42,44 @@
         background-color: rgb(226, 225, 225);
         border-radius: 6px;
     }
+    .logout {
+        width: 700px;
+        height: 60px;
+        margin: auto;
+    }
+    .logout-btn {
+        margin: 16px;
+        float: right;
+        border: none;
+        background-color: rgb(226, 225, 225);
+        border-radius: 6px;
+    }
 </style>
 <body>
 <div id="wrap">
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <img class="logo" src="/images/logo.png"/>
+        <a href="/signUp/login.html">
+            <img class="logo" src="/images/logo.png"/>
+        </a>
     </div>
 
     <!-- contents 영역 -->
     <div class="contents">
+            <div class="logout">
+                <button type="button" class="logout-btn" onclick="location.href='#'">LOGOUT</button>
+            </div>
         <!-- 이쯤 form 태그 위치해야 하는데, 페이지 이동 쉽게 보여주려고 지금 안넣었음 -->
             <!-- 상단 QR 영역 -->
-            <div class="qr flex">
-                <label class="qr-ttl">
-                    나의 QR
-                </label>
-                <div class="qr-img">
-                    <img class="qr-img1" src="/images/qr.png"/>
+            <div class="">
+                <div class="qr flex">
+                    <label class="qr-ttl">
+                        나의 QR
+                    </label>
+                    <div class="qr-img">
+                        <img class="qr-img1" src="/images/qr.png"/>
+                    </div>
                 </div>
             </div>
             <!-- 하단 정보 영역 -->
@@ -78,7 +97,7 @@
                         비밀번호
                     </label>
                     <div class="info-cnt">
-                        <button type="button" class="btn-style" onclick="location.href='updateUserPw.html'">비밀번호 수정</button>
+                        <button type="button" class="btn-style" onclick="location.href='checkPw.html'">비밀번호 수정</button>
                     </div>
                 </div>
                 <div class="info-box flex">
@@ -93,7 +112,7 @@
             </div>
             <!-- 하단 확인 버튼 -->
             <div class="btn flex">
-                <button type="bytton" class="btn-style" onclick="location.href='mainPage.html'">확인</button>
+                <button type="button" class="btn-style" onclick="location.href='mainPage.html'">확인</button>
             </div>
     </div>
 

@@ -33,10 +33,6 @@
         margin-top: 35px;
         text-align: center;
     }
-    .input3 {
-        width: 220px;
-        height: 30px;
-    }
     .ajax {
         font-size: 13px;
         color: red;
@@ -46,14 +42,6 @@
         padding-top: 50px;
     }
     .btn-style {
-        border: none;
-        background-color: rgb(226, 225, 225);
-        border-radius: 6px;
-    }
-    .btn-box {
-        margin: 40px;
-    }
-    .btn-style1 {
         border: none;
         background-color: rgb(226, 225, 225);
         border-radius: 6px;
@@ -72,41 +60,28 @@
     <!-- contents 영역 -->
     <div class="contents">
         <div class="title flex">
-            비밀번호 찾기
+            비밀번호 변경을 위한 본인 확인
         </div>
         <div class="mobile">
-            <div class="flex">
-                <div class="mobile-ttl">
-                    ID
-                </div>
-                <div class="mobile-input">
-                    <input type="text" class="input1" name="user_mobile" placeholder="아이디를 입력해주세요."/>
-                    <div class="ajax">
-                        (ajax) 등록된 아이디가 아닙니다.
-                    </div>
-                </div>
+            <div class="flex" style="margin-top: 80px; text-align: center;">
+                비밀번호 수정을 위해 본인 확인이 필요합니다.<br/>
+                현재 비밀번호를 입력해주세요.
             </div>
             <div class="flex">
                 <div class="mobile-ttl">
-                    휴대폰 번호
+                    현재 비밀번호
                 </div>
                 <div class="mobile-input">
-                    <input type="text" class="input1" name="user_mobile" placeholder="휴대폰 번호를 입력해주세요."/>
+                    <input type="text" class="input1" name="user_mobile" placeholder=""/>
                     <div class="ajax">
-                        (ajax) 사용자의 번호가 일치하지 않습니다.
+                        (ajax) 잘못된 형식의 비밀번호입니다.
                     </div>
                 </div>
-            </div>
-            <div class="btn-box flex">
-                <button type="button" class="btn-style1" onclick="location.href='#'">인증번호 전송</button>
-            </div>
-            <div class="btn-box flex">
-                <input type="text" class="input3" name="user_mobile" placeholder="인증번호를 입력해주세요."/>
             </div>
         </div>
         <!-- 하단 확인 버튼 -->
         <div class="btn flex">
-            <button type="bytton" class="btn-style" onclick="location.href='findPwdResult.html'">확인</button>
+            <button type="bytton" class="btn-style" onclick="location.href='updateUserPw.html'">확인</button>
         </div>
     </div>
     

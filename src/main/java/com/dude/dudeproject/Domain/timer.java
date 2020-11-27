@@ -9,13 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
-@Getter
-@Setter
 @Entity
 public class timer {
 
     @Id
     private Long id;
-
 
 }

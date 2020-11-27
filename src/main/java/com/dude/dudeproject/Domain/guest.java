@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Data
-@Getter
-@Setter
 @Entity
 public class guest {
 

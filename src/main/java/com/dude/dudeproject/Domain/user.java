@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@Table(name="user_info_tbl")
+@Table(name = "user_info_tbl")
 @Entity
-public class user {
+public class user extends Object {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_no;

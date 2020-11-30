@@ -1,16 +1,17 @@
 package com.dude.dudeproject.Domain;
 
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Data
 @Table(name = "user_info_tbl")
 @Entity
-public class user extends Object {
+public class user {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_no;
+
     private String user_id;
     private String user_pw;
     private String user_name;

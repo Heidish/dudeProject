@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html xmlns:th="http://www.thymeleaf.org">
-=======
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
->>>>>>> hyeon
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,17 +58,15 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <a href="/signUp/login.html">
+        <a href="/user/login">
             <img class="logo" src="/images/logo.png"/>
         </a>
     </div>
 
     <!-- contents 영역 -->
     <div class="contents">
-        <!-- 이쯤 form 태그 위치해야 하는데, 페이지 이동 쉽게 보여주려고 지금 안넣었음 -->
-        <form th:action="@{/add}" th:method="get" th:object="${user}">
             <!-- 하단 정보 영역 -->
-            <form action="/regi" th:action="@{/signup/regi}" th:object="${user}" method="post">
+            <form th:action="@{/user/add}" th:object="${user}" th:method="post">
             <div class="info">
                 <div class="info-box flex">
                     <label class="info-ttl">
@@ -132,7 +126,7 @@
             </div>
             <!-- 하단 확인 버튼 -->
             <div class="flex">
-                <input type="submit" class="btn-style1">확인</input>
+                <input type="submit" class="btn-style1" value="확인"/>
             </div>
         </form>
     </div>

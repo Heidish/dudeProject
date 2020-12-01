@@ -2,6 +2,7 @@ package com.dude.dudeproject.Controller;
 
 import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Service.userDaoService;
+import com.dude.dudeproject.System.SmsClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,20 +51,17 @@ public class userController {
         System.out.println(user.toString());
         service.save(user);
 
-        return "/signup/login";
-    }
         return "signup/login";
-        }
+    }
 
-
-        @GetMapping("/textauth")
+    @GetMapping("/textauth")
     public void text(){
-            SmsClass sms=new SmsClass();
-            String phoneNumber="01099744914";
-            String numStr="1234";
+        SmsClass sms=new SmsClass();
+        String phoneNumber="01099744914";
+        String numStr="1234";
 
-            sms.smsText(phoneNumber, numStr);
-        }
+        sms.smsText(phoneNumber, numStr);
+    }
 
     @PostMapping("/user/login")
     public String login(@ModelAttribute user user) {
@@ -90,4 +88,6 @@ public class userController {
 
         return "/signup/findPwd";
     }
+
+    // push해야함
 }

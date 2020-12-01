@@ -3,21 +3,21 @@ package com.dude.dudeproject.Controller;
 
 import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Repository.userRepository;
+import com.dude.dudeproject.System.SmsClass;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController(value="login.html")
 public class userController {
 
     @Autowired
     private userRepository urepo;
 
-    @GetMapping("signup/login.html")
+    @GetMapping("/idx/login")
     public String loginPage(){
 
-        return "signup/login";
+        return "login.html";
     }
 
     @GetMapping("/signup/preRegistration.html")
@@ -34,7 +34,7 @@ public class userController {
         model.addAttribute("user", new user());
 
 
-        return "signup/regi";
+        return "/regi";
     }
 
     @PostMapping("/regi")
@@ -44,7 +44,17 @@ public class userController {
 
         urepo.save(user);
 
-        return "/signup/login";
+        return "signup/login";
+        }
+
+
+        @GetMapping("/textauth")
+    public void text(){
+            SmsClass sms=new SmsClass();
+            String phoneNumber="01099744914";
+            String numStr="1234";
+
+            sms.smsText(phoneNumber, numStr);
         }
 
 }

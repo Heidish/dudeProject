@@ -52,6 +52,18 @@ public class userController {
 
         return "/signup/login";
     }
+        return "signup/login";
+        }
+
+
+        @GetMapping("/textauth")
+    public void text(){
+            SmsClass sms=new SmsClass();
+            String phoneNumber="01099744914";
+            String numStr="1234";
+
+            sms.smsText(phoneNumber, numStr);
+        }
 
     @PostMapping("/user/login")
     public String login(@ModelAttribute user user) {

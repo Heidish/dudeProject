@@ -27,7 +27,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.0'
-	compile group: 'javax.validation', name: 'validation-api'
+	compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
 }
 
 test {

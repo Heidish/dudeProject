@@ -20,9 +20,24 @@ public class userDaoService {
         this.repository = repository;
     }
 
+    /**
+     * 회원가입
+     * @param user
+     * @return
+     */
     public user save(user user) {
 
         return repository.save(user);
     }
 
+    /**
+     * 로그인
+     */
+    public String login(user user) {
+//        if (repository.findById(user.getUser_id()).isPresent() && repository.findByPw(user.getUser_pw()).isPresent()) {
+//            return user;
+//        }
+
+        return repository.findByUserId(user.getUser_id());
+    }
 }

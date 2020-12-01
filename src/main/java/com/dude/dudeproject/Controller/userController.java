@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Optional;
 
 
 @Controller
@@ -23,19 +26,20 @@ public class userController {
     }
 
     @GetMapping("/user/login")
-    public String loginPage(){
+    public String loginPage(Model model) {
+        model.addAttribute("user", new user());
 
         return "signup/login";
     }
 
     @GetMapping("/user/preRegistration")
-    public String preRegPage(){
+    public String preRegPage() {
 
         return "signup/preRegistration";
     }
 
     @GetMapping("/user/registration")
-    public String regPage(Model model){
+    public String regPage(Model model) {
         model.addAttribute("user", new user());
 
         return "signup/registration";
@@ -49,5 +53,29 @@ public class userController {
         return "/signup/login";
     }
 
+    @PostMapping("/user/login")
+    public String login(@ModelAttribute user user) {
+        service.login(user);
+        System.out.println(user.getUser_id());
+        System.out.println(user.getUser_pw());
 
+        if (service.login(user) == null) {
+
+            return "/signup/login";
+        }
+
+        return "afterLogin/mainPage";
+    }
+
+    @GetMapping("/user/findID")
+    public String findID() {
+
+        return "/signup/findID";
+    }
+
+    @GetMapping("/user/findPwd")
+    public String findPwd() {
+
+        return "/signup/findPwd";
+    }
 }

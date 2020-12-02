@@ -64,17 +64,16 @@ public class userController {
     }
 
     @PostMapping("/user/login")
-    public String login(@ModelAttribute user user) {
+    public String login(@ModelAttribute user user) throws Exception {
         service.login(user);
-        System.out.println(user.getUser_id());
-        System.out.println(user.getUser_pw());
+        System.out.println("id=" + user.getUser_id());
+        System.out.println("pw=" + user.getUser_pw());
 
-        if (service.login(user) == null) {
-
-            return "/signup/login";
+        if (!service.login(user)) {
+            throw new Exception();
         }
 
-        return "afterLogin/mainPage";
+        return "afterLogin/mainPage";  // success
     }
 
     @GetMapping("/user/findID")
@@ -89,5 +88,10 @@ public class userController {
         return "/signup/findPwd";
     }
 
+    @GetMapping("/user/afterLogin")
+    public String afterLogin() {
+
+        return "/afterLogin/mainPage";
+    }
     // push해야함
 }

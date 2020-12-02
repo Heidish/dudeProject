@@ -52,20 +52,15 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-<<<<<<< HEAD
-        <a th:href="@{/signUp/login.html}">
+        <a th:href="@{/user/login}">
             <img class="logo" th:src="@{/images/logo.png}"/>
-=======
-        <a href="/user/login">
-            <img class="logo" src="/images/logo.png"/>
->>>>>>> a892df0023d11a69d0e0e587aa1c3e5df6b3d327
         </a>
     </div>
 
     <!-- contents 영역 -->
     <div class="contents">
         <div class="box flex">
-            <button type="button" class="btn-style" onclick="location.href='@{registration.html}'">간편 회원가입</button>
+            <button type="button" class="btn-style" onclick="location.href='/user/registration'">간편 회원가입</button>
         </div>
         <div class="announce1">
             SNS 회원가입

@@ -64,13 +64,8 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-<<<<<<< HEAD:src/main/resources/templates/afterlogin/mainPage.html
-      <a th:href="@{/signUp/login.html}">
-          <img class="logo" th:src="@{/images/logo.png}"/>
-=======
       <a href="/user/login">
           <img class="logo" src="/images/logo.png"/>
->>>>>>> a892df0023d11a69d0e0e587aa1c3e5df6b3d327:src/main/resources/templates/afterLogin/mainPage.html
       </a>
     </div>
 
@@ -106,7 +101,7 @@
               </svg>
             </div>
             <div class="clock-input">
-              <input type="text" name="time_set_home" th:value="06:00pm"/>
+              <input type="text" name="time_set_home" value="06:00pm"/>
             </div>
             <div>
               <button type="button" class="btn-style" onclick="location.href='#'">확인</button>

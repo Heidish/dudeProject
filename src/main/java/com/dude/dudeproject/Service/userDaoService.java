@@ -33,11 +33,14 @@ public class userDaoService {
     /**
      * 로그인
      */
-    public String login(user user) {
+    public boolean login(user user) {
 //        if (repository.findById(user.getUser_id()).isPresent() && repository.findByPw(user.getUser_pw()).isPresent()) {
 //            return user;
 //        }
+        if (user.getUser_pw().equals(repository.findByUserId(user.getUser_id()))) {
+            return true; // login success
+        }
 
-        return repository.findByUserId(user.getUser_id());
+        return false; // login fail
     }
 }

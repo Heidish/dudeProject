@@ -5,16 +5,9 @@ import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Domain.userVO;
 import com.dude.dudeproject.Repository.userRepository;
 import com.dude.dudeproject.Service.userDaoService;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
-import java.net.URI;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 
 @Controller
 public class testController {

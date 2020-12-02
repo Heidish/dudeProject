@@ -3,25 +3,30 @@ package com.dude.dudeproject.Controller;
 import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Service.userDaoService;
 import com.dude.dudeproject.System.SmsClass;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Optional;
 
 
 @Controller
+@Slf4j
 public class userController {
 
     @Autowired
     private userDaoService service;
 
+    private static final Logger logger = LogManager.getLogger(userController.class);
+
     @GetMapping("/")
     public String startPage() {
+        logger.info("LogManager's logger : logging test");
+        System.out.println(logger.equals(log));
 
         return "index";
     }

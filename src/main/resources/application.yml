@@ -20,7 +20,4 @@ spring:
 
 #>>>>>>>>>> Logging 설정  <<<<<<<<<<<<
 logging:
-  level:
-    org.springframework.web: debug
-    org.hibernate.sql: debug
-    jpa: debug
+  config: classpath:log4j2.xml

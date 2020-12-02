@@ -34,9 +34,6 @@ public class userDaoService {
      * 로그인
      */
     public String login(user user) {
-//        if (repository.findById(user.getUser_id()).isPresent() && repository.findByPw(user.getUser_pw()).isPresent()) {
-//            return user;
-//        }
 
         return repository.findByUserId(user.getUser_id());
     }

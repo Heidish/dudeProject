@@ -1,12 +1,15 @@
 package com.dude.dudeproject.Controller;
 
 import com.dude.dudeproject.Domain.user;
+import com.dude.dudeproject.Repository.userRepository;
 import com.dude.dudeproject.Service.userDaoService;
 import com.dude.dudeproject.System.SmsClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +19,21 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class userController {
 
+//    @Autowired
+//    private userDaoService service;
+//
+//    private BCryptPasswordEncoder pwdEncoder;
+
+    userDaoService service;
+    PasswordEncoder passwordEncoder;
+
     @Autowired
-    private userDaoService service;
+    public userController(userDaoService service, PasswordEncoder passwordEncoder) {
+
+        this.service = service;
+        this.passwordEncoder = passwordEncoder;
+    }
+
 
     private static final Logger logger = LogManager.getLogger(userController.class);
 
@@ -30,7 +46,7 @@ public class userController {
 //    }
 
     @GetMapping(value = "/login")
-    public String loginPage(Model model) {
+    public String loginPage(@ModelAttribute user user, Model model) {
         model.addAttribute("user", new user());
 
         return "signup/login";
@@ -51,7 +67,13 @@ public class userController {
 
     @PostMapping(value = "/add")
     public String createUser(@ModelAttribute user user) {
-        System.out.println(user.toString());
+        System.out.println("암호화 전 비밀번호 = " + user.getUser_pw());
+
+        String password = passwordEncoder.encode(user.getUser_pw()); // 비밀번호를 암호화
+        user.setUser_pw(password);
+
+        System.out.println("암호화 후 비밀번호 = " + password);
+
         service.save(user);
 
         return "signup/login";
@@ -67,11 +89,13 @@ public class userController {
 
     @PostMapping(value = "/login")
     public String login(@ModelAttribute user user) throws Exception {
-        service.login(user);
-        System.out.println("id=" + user.getUser_id());
-        System.out.println("pw=" + user.getUser_pw());
+        String password = service.loginPwdChk(user);
+        System.out.println("로그인 페이지에서 사용자가 입력한 비밀번호 : " + user.getUser_pw());
+        System.out.println("db에 저장된 암호화된 비밀번호 : " + password);
 
-        if (!service.login(user)) {
+        boolean pwdMatch = passwordEncoder.matches(user.getUser_pw(), password);
+
+        if (!service.login(user) && pwdMatch == false) {
             throw new Exception();
         }
 

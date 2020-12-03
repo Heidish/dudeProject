@@ -58,7 +58,7 @@ public class userController {
     }
 
     @GetMapping("/textauth")
-    public void text(String number){
+    public void text(int number){
         SmsClass sms=new SmsClass();
 
         sms.smsText(number);

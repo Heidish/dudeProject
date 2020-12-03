@@ -13,7 +13,9 @@ public class SmsClass {
 
     private int certNumLength = 6;
 
-    public void smsText(String phoneNumber) {
+    public void smsText(int phoneNumber) {
+
+        String phoneNum = Integer.toString(phoneNumber);
 
         String api_key = "NCSDFJQCQZBN8HGD";
         String api_secret = "LXGWX1ODRGONQXLYUWYB1EBJ8E6AWC4D";
@@ -28,7 +30,7 @@ public class SmsClass {
 
         // 4 params(to, from, type, text) are mandatory. must be filled
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put("to", phoneNumber); // 수신전화번호
+        params.put("to", phoneNum); // 수신전화번호
         params.put("from", "01094548994"); // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
         params.put("type", "SMS");
         params.put("text", "DUDE Service 회원가입 휴대폰인증 메시지 : DUDE 서비스에 가입하시려면 다음 인증번호를 입력 해 주세요.");

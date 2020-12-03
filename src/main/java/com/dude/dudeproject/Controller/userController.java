@@ -57,11 +57,12 @@ public class userController {
         return "signup/login";
     }
 
-    @GetMapping("/textauth")
-    public void text(int number){
+    @GetMapping(value="/textauth")
+    public @ResponseBody String text(@RequestParam("user_mobile") String number){
         SmsClass sms=new SmsClass();
-
-        sms.smsText(number);
+        System.out.println(number);
+        String certNum = sms.smsText(number);
+        return certNum;
     }
 
     @PostMapping(value = "/login")

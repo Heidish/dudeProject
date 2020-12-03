@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.0'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.4.0'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
 }
 
 group = 'com.dude'
@@ -9,40 +9,56 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-	all {
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
 //	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.0'
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.0'
 //	compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
-	compile group: 'net.nurigo', name: 'javaSDK', version: '2.2'
+    compile group: 'net.nurigo', name: 'javaSDK', version: '2.2'
 
-	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-	testImplementation 'org.springframework.boot:spring-boot-starter-log4j2'
-	implementation 'org.apache.logging.log4j:log4j-web:2.12.1'
-	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.8'
-	implementation 'com.lmax:disruptor:3.4.2'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation 'org.apache.logging.log4j:log4j-web:2.12.1'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.8'
+    implementation 'com.lmax:disruptor:3.4.2'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+
+
+    }
+    // https://mvnrepository.com/artifact/com.google.zxing/core
+    compile group: 'com.google.zxing', name: 'core', version: '3.3.0'
+
+    // https://mvnrepository.com/artifact/com.google.zxing/javase
+    compile group: 'com.google.zxing', name: 'javase', version: '3.3.0'
+
+    testCompile group: 'io.projectreactor', name: 'reactor-test', version: '3.3.0.RELEASE'
+    compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.0.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework/spring-webflux
+    compile group: 'org.springframework', name: 'spring-webflux', version: '5.2.9.RELEASE'
+
+    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'
+
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

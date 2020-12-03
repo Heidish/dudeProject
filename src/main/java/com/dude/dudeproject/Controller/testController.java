@@ -1,8 +1,6 @@
 package com.dude.dudeproject.Controller;
 
 
-import com.dude.dudeproject.Domain.user;
-import com.dude.dudeproject.Domain.userVO;
 import com.dude.dudeproject.Repository.userRepository;
 import com.dude.dudeproject.Service.userDaoService;
 import org.springframework.stereotype.Controller;

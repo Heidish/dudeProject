@@ -6,10 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.text.html.Option;
-import java.lang.reflect.Member;
-import java.util.Optional;
-
 @Repository
 public interface userRepository extends JpaRepository<user, Long> {
 
@@ -23,5 +19,6 @@ public interface userRepository extends JpaRepository<user, Long> {
 
     @Query(value = "select u.user_pw from user u where u.user_id = ?1")
     String findByUserId(@Param("user_id") String user_id);
+
 
 }

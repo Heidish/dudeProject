@@ -36,8 +36,13 @@ public class userDaoService {
             return true; // login success
         }
 
-
         return false; // login fail
+    }
+
+    public String loginPwdChk(user user) {
+        String pass = repository.findByUserId(user.getUser_id()); // pass = 유저의 암호화된 비밀번호
+
+        return pass; // login fail
     }
 
     /**

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 @Controller
 @Slf4j
 public class userController {
@@ -60,12 +59,10 @@ public class userController {
     }
 
     @GetMapping("/textauth")
-    public void text(){
+    public void text(String number){
         SmsClass sms=new SmsClass();
-        String phoneNumber="01099744914";
-        String numStr="1234";
 
-        sms.smsText(phoneNumber, numStr);
+        sms.smsText(number);
     }
 
     @PostMapping("/user/login")

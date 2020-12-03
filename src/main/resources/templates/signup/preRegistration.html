@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,8 +52,8 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <a href="/user/login">
-            <img class="logo" src="/images/logo.png"/>
+        <a th:href="@{/user/login}">
+            <img class="logo" th:src="@{/images/logo.png}"/>
         </a>
     </div>
 
@@ -70,7 +70,7 @@
         </div>
         <div class="sign1 flex">
             <!-- 아래 이미지 대신 카카오 로그인 api 삽입 예정 -->
-            <img class="sns-reg-img" src="/images/sns-registration.png"/>
+            <img class="sns-reg-img" th:src="@{/images/sns-registration.png}"/>
         </div>
     </div>
     

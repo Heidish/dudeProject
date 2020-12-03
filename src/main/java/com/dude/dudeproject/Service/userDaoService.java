@@ -22,8 +22,6 @@ public class userDaoService {
 
     /**
      * 회원가입
-     * @param user
-     * @return
      */
     public user save(user user) {
 
@@ -33,8 +31,23 @@ public class userDaoService {
     /**
      * 로그인
      */
-    public String login(user user) {
+    public boolean login(user user) {
+        if (user.getUser_pw().equals(repository.findByUserId(user.getUser_id()))) {
+            return true; // login success
+        }
 
-        return repository.findByUserId(user.getUser_id());
+
+        return false; // login fail
+    }
+
+    /**
+     *  idCheck
+     */
+    public int idCheck(String user_id) {
+        if (repository.findByUserIds(user_id) == null) {
+            return 0; // id is unique
+        }
+        return 1; // id is reduplicated
     }
 }
+

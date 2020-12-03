@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -23,14 +24,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class userControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @MockBean
-    private userDaoService service;
+    userDaoService service;
 
     @Test
     void testLoginPage() throws Exception {
-        mockMvc.perform(get("/user/login")).andExpect(status().isOk()).andExpect(model().attributeExists("user"))
+        mockMvc.perform(get("/user/login"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("user"))
                 .andExpect(view().name("signup/login"));
     }
 

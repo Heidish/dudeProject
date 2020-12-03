@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,8 +40,8 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <a href="/user/login">
-            <img class="logo" src="/images/logo.png"/>
+        <a th:href="@{/signUp/login.html}">
+            <img class="logo" th:src="@{/images/logo.png}"/>
         </a>
     </div>
 
@@ -58,10 +58,10 @@
         </div>
         <div class="flex">
             <div class="btn-box">
-                <button type="button" class="btn-style1" onclick="location.href='login.html'">로그인</button>
+                <button type="button" class="btn-style1" onclick="location.href='@{login.html}'">로그인</button>
             </div>
             <div class="btn-box">
-                <button type="button" class="btn-style1" onclick="location.href='findPwd.html'">비밀번호 찾기</button>
+                <button type="button" class="btn-style1" onclick="location.href='@{findPwd.html}'">비밀번호 찾기</button>
             </div>
         </div>
     </div>

@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" >
-=======
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
->>>>>>> a892df0023d11a69d0e0e587aa1c3e5df6b3d327
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +9,92 @@
 <!-- 부트스트랩 css 사용 -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" media="screen" href="/css/commons.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!--<script type="text/javascript" src="/static/js/registration.js"></script>-->
+    <script>
+        $(function (){
+            $('input[name=user_id]').blur(function (){
+                const user_id = document.querySelector('input[name="user_id"]').value
+                const pattern_num = /[0-9]/;	// 숫자
+                const pattern_eng = /[a-zA-Z]/;	// 문자
+                const pattern_spc = /[~!@#$%^&*()+|<>?:{}]/; // 특수문자
+                const pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
+                const form = {
+                    user_id: user_id
+                }
+                $.ajax({
+                    "url": '/user/idCheck' ,
+                    "type": 'get',
+                    "data" : form,
+                    "success" : function (data){
+                        console.log(data)
+                        if(data === 1){
+                            //document.getElementsById('id-valid').innerHTML='중복된 아이디입니다.'
+                            $('#id-valid').text('사용중인 아이디입니다.')
+                            $('#id-valid').css('color','red')
+                            $('#id-valid').attr('disabled',true)
+                        } else if(user_id.length<5 || user_id.length>20 || pattern_kor.test(user_id) || pattern_spc.test(user_id) ){
+                            $('#id-valid').text('5~20자의 영문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.')
+                            $('#id-valid').css('color','red')
+                            $('#id-valid').attr('disabled',true)
+                        } else {
+                            $('#id-valid').text(' ')
+                        }
+                    },
+                    "fail":function (data) {
+                        console.log(data)
+                        alert("fail")
+                    }
+                })
+            })
+        })
 
+        $(function (){
+            $('input[name=user_pw]').blur(function (){
+                const user_pw = document.querySelector('input[name="user_pw"]').value
+                const pattern_num = /[0-9]/;	// 숫자
+                const pattern_eng = /[a-zA-Z]/;	// 문자
+                const pattern_spc = /[~!@#$%^&*()+|<>?:{}]/; // 특수문자
+
+                if(user_pw.length<8 || user_pw.length>16 || !pattern_num.test(user_pw) || !pattern_spc.test(user_pw) || !pattern_eng.test(user_pw)){
+                $('#password-valid').text('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.')
+                $('#password-valid').css('color','red')
+                $('#password-valid').attr('disabled',true)
+                } else {
+                $('#password-valid').text(' ')
+                }
+            })
+        })
+
+        $(function (){
+            $('input[name=user_pw_check]').blur(function (){
+                const user_pw_check = document.querySelector('input[name="user_pw_check"]').value
+                const user_pw = document.querySelector('input[name="user_pw"]').value
+                if(user_pw_check != user_pw){
+                    $('#password-check').text('비밀번호가 일치하지 않습니다.')
+                    $('#password-check').css('color','red')
+                    $('#password-check').attr('disabled',true)
+                } else {
+                    $('#password-check').text(' ')
+                }
+            })
+        })
+
+        $(function (){
+            $('input[name=user_mobile]').blur(function (){
+                const user_mobile = document.querySelector('input[name="user_mobile"]').value
+                console.log(user_mobile)
+                const pattern_num = /[0-9]/;	// 숫자
+                if(user_mobile.length !=11 || !pattern_num.test(user_mobile)){
+                    $('#phone-valid').text('형식이 일치하지 않습니다.')
+                    $('#phone-valid').css('color','red')
+                    $('#phone-valid').attr('disabled',true)
+                } else {
+                    $('#phone-valid').text(' ')
+                }
+            })
+        })
+    </script>
 <style>
     .info {
         margin: 50px;
@@ -87,8 +168,8 @@
                     </label>
                     <div class="info-cnt">
                         <input type="text" th:field="*{user_id}" class="inputbox" name="user_id" placeholder="아이디를 입력해주세요." required="required"/>
-                        <div class="valid">
-                            (ajax) 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.
+                        <div class="valid" id="id-valid">
+
                         </div>
                     </div>
                 </div>
@@ -98,8 +179,8 @@
                     </label>
                     <div class="info-cnt">
                         <input type="text" th:field="*{user_pw}" class="inputbox" name="user_pw" placeholder="비밀번호를 입력해주세요." required="required"/>
-                        <div class="ajax">
-                            (ajax) 잘못된 형식의 비밀번호입니다.
+                        <div class="ajax" id="password-valid">
+
                         </div>
                     </div>
                 </div>
@@ -108,9 +189,8 @@
                         비밀번호 확인
                     </label>
                     <div class="info-cnt">
-                        <input type="text" class="inputbox"  name="" placeholder="비밀번호를 한번 더 입력해주세요."/>
-                        <div class="ajax">
-                            (ajax) 비밀번호가 일치하지 않습니다.
+                        <input type="text" class="inputbox"  name="user_pw_check" placeholder="비밀번호를 한번 더 입력해주세요."/>
+                        <div class="ajax" id="password-check">
                         </div>
                     </div>
                 </div>
@@ -119,17 +199,26 @@
                         전화번호
                     </label>
                     <div class="info-cnt">
-                        <input type="text" class="inputbox" th:field="*{user_mobile}" name="user_mobile" placeholder="'-' 없이 숫자만 입력해주세요."/>
+                        <input type="text" class="inputbox" name="user_mobile" placeholder="'-' 없이 숫자만 입력해주세요."/>
+                        <div class="ajax" id="phone-valid">
+                        </div>
                     </div>
+
                 </div>
                 <div class="info-box flex">
                     <button type="button" class="btn-style1" onclick="location.href='#'">인증번호 전송</button>
                 </div>
                 <div class="info-box flex">
-                    <input type="text" class="input2" name="user_mobile" placeholder="인증번호를 입력해주세요."/>
+                    <div class="info-cnt">
+                        <input type="text" class="input2" name="user_mobile" placeholder="인증번호를 입력해주세요."/>
+                        <div class="ajax" id="verification-check">
+                            (ajax) 인증번호를 확인해주세요.
+                        </div>
+                    </div>
                 </div>
+
                 <div class="flex">
-                    <button type="button" class="btn-style1" onclick="location.href='#'">확인</button>
+                    <button type="button" class="btn-style1" onclick="location.href='#'" id="verification-confirm">확인</button>
                 </div>
             </div>
             <!-- 하단 확인 버튼 -->
@@ -147,7 +236,6 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   

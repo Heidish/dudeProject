@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020/12/03 12:03:22,671 [DEBUG]  [org.springframework.beans.factory.support.DefaultSingletonBeanRegistry] [restartedMain]- Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
  -2020/12/03 12:03:22,686 [DEBUG]  [org.springframework.beans.factory.support.DefaultSingletonBeanRegistry] [restartedMain]- Creating shared instance of singleton bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor'
  -2020/12/03 12:03:22,686 [DEBUG]  [org.springframework.beans.factory.support.DefaultSingletonBeanRegistry] [restartedMain]- Creating shared instance of singleton bean 'org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor'
@@ -1513,4 +1514,123 @@ Unconditional classes:
  -2020/12/03 12:03:24,702 [DEBUG]  [org.springframework.boot.logging.DeferredLog] [restartedMain]- Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@7b3ee5eb
  -2020/12/03 12:03:24,717 [DEBUG]  [org.springframework.boot.logging.DeferredLog] [restartedMain]- Starting application com.dude.dudeproject.DudeprojectApplication with URLs [file:/C:/Project/dudegradle/build/classes/java/main/, file:/C:/Project/dudegradle/build/resources/main/]
  -2020/12/03 12:03:25,092 [DEBUG]  [org.springframework.core.env.PropertySourcesPropertyResolver] [RMI TCP Connection(3)-172.30.1.4]- Found key 'local.server.port' in PropertySource 'server.ports' with value of type Integer
+=======
+2020/12/03 11:43:53,396 [DEBUG]  [org.springframework.core.env.PropertySourcesPropertyResolver] [restartedMain]- Found key 'spring.liveBeansView.mbeanDomain' in PropertySource 'systemProperties' with value of type String
+ -2020/12/03 11:43:53,412 [INFO ]  [org.springframework.boot.StartupInfoLogger] [restartedMain]- Started DudeprojectApplication in 3.505 seconds (JVM running for 4.761)
+ -2020/12/03 11:43:53,414 [DEBUG]  [org.springframework.boot.logging.DeferredLog] [restartedMain]- Creating new Restarter for thread Thread[main,5,main]
+ -2020/12/03 11:43:53,415 [DEBUG]  [org.springframework.boot.logging.DeferredLog] [restartedMain]- Immediately restarting application
+ -2020/12/03 11:43:53,415 [DEBUG]  [org.springframework.boot.logging.DeferredLog] [restartedMain]- Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@17781fda
+ -2020/12/03 11:43:53,415 [DEBUG]  [org.springframework.boot.logging.DeferredLog] [restartedMain]- Starting application com.dude.dudeproject.DudeprojectApplication with URLs [file:/C:/Users/admin/Desktop/prj/QR/git/dudegradle/build/classes/java/main/, file:/C:/Users/admin/Desktop/prj/QR/git/dudegradle/build/resources/main/]
+ -2020/12/03 11:43:53,906 [DEBUG]  [org.springframework.core.env.PropertySourcesPropertyResolver] [RMI TCP Connection(3)-172.30.1.14]- Found key 'local.server.port' in PropertySource 'server.ports' with value of type Integer
+ -2020/12/03 11:43:56,877 [INFO ]  [org.apache.juli.logging.DirectJDKLog] [http-nio-8090-exec-1]- Initializing Spring DispatcherServlet 'dispatcherServlet'
+ -2020/12/03 11:43:56,877 [INFO ]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-1]- Initializing Servlet 'dispatcherServlet'
+ -2020/12/03 11:43:56,877 [DEBUG]  [org.springframework.web.servlet.DispatcherServlet] [http-nio-8090-exec-1]- Detected StandardServletMultipartResolver
+ -2020/12/03 11:43:56,878 [DEBUG]  [org.springframework.web.servlet.DispatcherServlet] [http-nio-8090-exec-1]- Detected AcceptHeaderLocaleResolver
+ -2020/12/03 11:43:56,878 [DEBUG]  [org.springframework.web.servlet.DispatcherServlet] [http-nio-8090-exec-1]- Detected FixedThemeResolver
+ -2020/12/03 11:43:56,878 [DEBUG]  [org.springframework.web.servlet.DispatcherServlet] [http-nio-8090-exec-1]- Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7b1b8550
+ -2020/12/03 11:43:56,879 [DEBUG]  [org.springframework.web.servlet.DispatcherServlet] [http-nio-8090-exec-1]- Detected org.springframework.web.servlet.support.SessionFlashMapManager@4e6d80f6
+ -2020/12/03 11:43:56,879 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-1]- enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+ -2020/12/03 11:43:56,879 [INFO ]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-1]- Completed initialization in 2 ms
+ -2020/12/03 11:43:56,889 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-1]- GET "/", parameters={}
+ -2020/12/03 11:43:56,894 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-1]- Mapped to ParameterizableViewController [view="index"]
+ -2020/12/03 11:43:56,895 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-1]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:56,901 [DEBUG]  [org.springframework.web.servlet.view.ContentNegotiatingViewResolver] [http-nio-8090-exec-1]- Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+ -2020/12/03 11:43:57,064 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-1]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:57,065 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-1]- Completed 200 OK
+ -2020/12/03 11:43:58,043 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-2]- GET "/user/login", parameters={}
+ -2020/12/03 11:43:58,045 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-2]- Mapped to com.dude.dudeproject.Controller.userController#loginPage(Model)
+ -2020/12/03 11:43:58,045 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-2]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,065 [DEBUG]  [org.springframework.web.servlet.view.ContentNegotiatingViewResolver] [http-nio-8090-exec-2]- Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+ -2020/12/03 11:43:58,193 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-2]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,193 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-2]- Completed 200 OK
+ -2020/12/03 11:43:58,211 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-3]- GET "/css/commons.css", parameters={}
+ -2020/12/03 11:43:58,212 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-4]- GET "/css/.css", parameters={}
+ -2020/12/03 11:43:58,214 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-4]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:43:58,215 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-3]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:43:58,216 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-3]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,220 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-4]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,223 [DEBUG]  [org.springframework.web.servlet.resource.ResourceHttpRequestHandler] [http-nio-8090-exec-4]- Resource not found
+ -2020/12/03 11:43:58,223 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-4]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,224 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-4]- Completed 404 NOT_FOUND
+ -2020/12/03 11:43:58,401 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-4]- "ERROR" dispatch for GET "/error", parameters={}
+ -2020/12/03 11:43:58,403 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-3]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,403 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-4]- Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+ -2020/12/03 11:43:58,407 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-3]- Completed 200 OK
+ -2020/12/03 11:43:58,407 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-4]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,412 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-5]- GET "/images/logo.png", parameters={}
+ -2020/12/03 11:43:58,413 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-5]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:43:58,413 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-5]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,416 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-5]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,416 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-5]- Completed 200 OK
+ -2020/12/03 11:43:58,424 [DEBUG]  [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8090-exec-4]- Using 'application/json;q=0.1', given [text/css, */*;q=0.1] and supported [application/json, application/*+json, application/json, application/*+json]
+ -2020/12/03 11:43:58,425 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-4]- Writing [{timestamp=Thu Dec 03 11:43:58 KST 2020, status=404, error=Not Found, message=No message available,  (truncated)...]
+ -2020/12/03 11:43:58,466 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-6]- GET "/images/login_logo.png", parameters={}
+ -2020/12/03 11:43:58,467 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-6]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:43:58,467 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-6]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,470 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-6]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,470 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-6]- Completed 200 OK
+ -2020/12/03 11:43:58,472 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-4]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,473 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-7]- GET "/images/login_img.png", parameters={}
+ -2020/12/03 11:43:58,475 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-7]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:43:58,475 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-4]- Exiting from "ERROR" dispatch, status 404
+ -2020/12/03 11:43:58,475 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-7]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,477 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-8]- GET "/images/sns-login.png", parameters={}
+ -2020/12/03 11:43:58,479 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-8]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:43:58,479 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-7]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,479 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-8]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,479 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-7]- Completed 200 OK
+ -2020/12/03 11:43:58,482 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-8]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:43:58,483 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-8]- Completed 200 OK
+ -2020/12/03 11:44:00,733 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-9]- GET "/user/preRegistration", parameters={}
+ -2020/12/03 11:44:00,734 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-9]- Mapped to com.dude.dudeproject.Controller.userController#preRegPage()
+ -2020/12/03 11:44:00,734 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-9]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,737 [DEBUG]  [org.springframework.web.servlet.view.ContentNegotiatingViewResolver] [http-nio-8090-exec-9]- Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+ -2020/12/03 11:44:00,741 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-9]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,741 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-9]- Completed 200 OK
+ -2020/12/03 11:44:00,757 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-10]- GET "/css/commons.css", parameters={}
+ -2020/12/03 11:44:00,758 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-10]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:44:00,759 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-10]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,762 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-1]- GET "/css/.css", parameters={}
+ -2020/12/03 11:44:00,763 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-1]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:44:00,763 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-1]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,764 [DEBUG]  [org.springframework.web.servlet.resource.ResourceHttpRequestHandler] [http-nio-8090-exec-1]- Resource not found
+ -2020/12/03 11:44:00,764 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-1]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,764 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-1]- Completed 404 NOT_FOUND
+ -2020/12/03 11:44:00,765 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-10]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,765 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-1]- "ERROR" dispatch for GET "/error", parameters={}
+ -2020/12/03 11:44:00,765 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-10]- Completed 200 OK
+ -2020/12/03 11:44:00,766 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-1]- Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+ -2020/12/03 11:44:00,766 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-1]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,767 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-2]- GET "/images/logo.png", parameters={}
+ -2020/12/03 11:44:00,767 [DEBUG]  [org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor] [http-nio-8090-exec-1]- Using 'application/json;q=0.1', given [text/css, */*;q=0.1] and supported [application/json, application/*+json, application/json, application/*+json]
+ -2020/12/03 11:44:00,767 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-1]- Writing [{timestamp=Thu Dec 03 11:44:00 KST 2020, status=404, error=Not Found, message=No message available,  (truncated)...]
+ -2020/12/03 11:44:00,767 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-2]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:44:00,767 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-2]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,768 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-1]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,768 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-1]- Exiting from "ERROR" dispatch, status 404
+ -2020/12/03 11:44:00,772 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-3]- GET "/images/sns-registration.png", parameters={}
+ -2020/12/03 11:44:00,773 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-2]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,773 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-2]- Completed 200 OK
+ -2020/12/03 11:44:00,773 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-3]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:44:00,773 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-3]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,778 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-3]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:00,778 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-3]- Completed 200 OK
+ -2020/12/03 11:44:01,544 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-5]- GET "/user/registration", parameters={}
+ -2020/12/03 11:44:01,545 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-5]- Mapped to com.dude.dudeproject.Controller.userController#regPage(Model)
+ -2020/12/03 11:44:01,545 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-5]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:01,547 [DEBUG]  [org.springframework.web.servlet.view.ContentNegotiatingViewResolver] [http-nio-8090-exec-5]- Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+ -2020/12/03 11:44:01,557 [DEBUG]  [org.springframework.beans.CachedIntrospectionResults] [http-nio-8090-exec-5]- Not strongly caching class [com.dude.dudeproject.Domain.user] because it is not cache-safe
+ -2020/12/03 11:44:01,570 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-5]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:01,571 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-5]- Completed 200 OK
+ -2020/12/03 11:44:01,585 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-6]- GET "/css/commons.css", parameters={}
+ -2020/12/03 11:44:01,586 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-6]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:44:01,586 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-6]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:01,590 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-6]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:01,591 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-6]- Completed 200 OK
+ -2020/12/03 11:44:01,596 [DEBUG]  [org.springframework.core.log.LogFormatUtils] [http-nio-8090-exec-4]- GET "/images/logo.png", parameters={}
+ -2020/12/03 11:44:01,597 [DEBUG]  [org.springframework.web.servlet.handler.AbstractHandlerMapping] [http-nio-8090-exec-4]- Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+ -2020/12/03 11:44:01,597 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-4]- Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:01,604 [DEBUG]  [org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor] [http-nio-8090-exec-4]- Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+ -2020/12/03 11:44:01,604 [DEBUG]  [org.springframework.web.servlet.FrameworkServlet] [http-nio-8090-exec-4]- Completed 200 OK
+>>>>>>> 1cd006fba8bbbf92a767f708aa65e7a8222a7edb
  -

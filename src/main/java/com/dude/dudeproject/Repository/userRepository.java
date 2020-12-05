@@ -34,4 +34,7 @@ public interface userRepository extends JpaRepository<user, Long> {
     @Query(value = "select user_no, user_id, user_mobile, user_name, user_pw from user where user_id=?1")
     user findByUser(@Param("user_id") String user_id);
 
+    // id 값으로 no 값 얻기
+    @Query(value ="select user_no from user where user_id=?1")
+    String findByIdGetNo(@Param("user_id") String user_id);
 }

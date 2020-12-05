@@ -41,6 +41,14 @@ function inputTimeColon(time) {
 $(function (){
     $('#set_time').on('click',function (){
         const time = document.querySelector('input[name="time_set_home"]').value
+        $.ajax({
+            "url":'/timer/setTimer',
+            "type":'post',
+            "data":time,
+            "succes":function (){
+                console.log()
 
+            }
+        })
     })
 })

@@ -14,6 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/user")
 @Slf4j
@@ -88,7 +91,7 @@ public class userController {
     }
 
     @PostMapping(value = "/login")
-    public String login(@ModelAttribute user user) throws Exception {
+    public String login(@ModelAttribute user user, HttpServletRequest request) throws Exception {
         String password = service.loginPwdChk(user);
         System.out.println("로그인 페이지에서 사용자가 입력한 비밀번호 : " + user.getUser_pw());
         System.out.println("db에 저장된 암호화된 비밀번호 : " + password);
@@ -98,6 +101,8 @@ public class userController {
         if (!service.login(user) && pwdMatch == false) {
             throw new Exception();
         }
+        HttpSession session = request.getSession(true);
+        session.setAttribute("id", user.getUser_id());
 
         return "afterLogin/mainPage";  // success
     }
@@ -150,7 +155,6 @@ public class userController {
         }else{
             return 1; // 중복
         }
-
     }
 
     @GetMapping(value = "/mobileCheck")
@@ -178,5 +182,56 @@ public class userController {
 
        user.setUser_pw(password);
        service.setNewPass(user);
+    }
+
+    @GetMapping(value ="/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession(true);
+        session.invalidate();
+        return "/signup/login";
+    }
+
+    @GetMapping(value = "/account")
+    public String myAccount(){
+
+        return "/afterLogin/myAccount";
+    }
+
+    @GetMapping(value = "/main")
+    public String goMain(){
+
+        return "/afterLogin/mainPage";
+    }
+
+    @GetMapping(value = "/chkPass")
+    public String goChkPass(){
+
+        return "/afterLogin/checkPw";
+    }
+
+    @PostMapping(value = "/chkPass")
+    public String chkPass(HttpServletRequest request, @RequestParam String user_pw) throws Exception {
+        HttpSession session = request.getSession(false);
+        String user_id = (String) session.getAttribute("id");
+        user user= new user();
+        user.setUser_pw(user_pw);
+        user.setUser_id(user_id);
+        String password = service.loginPwdChk(user);
+        System.out.println("로그인 페이지에서 사용자가 입력한 비밀번호 : " + user.getUser_pw());
+        System.out.println("db에 저장된 암호화된 비밀번호 : " + password);
+
+        boolean pwdMatch = passwordEncoder.matches(user.getUser_pw(), password);
+
+        if (!service.login(user) && pwdMatch == false) {
+            throw new Exception();  //에러 페이지 제어 필요
+        }
+
+        return "/afterLogin/updateUserPw";
+    }
+
+    @GetMapping(value = "/updateMobile")
+    public String updateMobile(){
+
+        return "/afterLogin/updateUserMobile";
     }
 }

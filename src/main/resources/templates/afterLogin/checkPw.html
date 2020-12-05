@@ -71,18 +71,17 @@
                 <div class="mobile-ttl">
                     현재 비밀번호
                 </div>
+        <form method="post" action="/user/chkPass">
                 <div class="mobile-input">
-                    <input type="text" class="input1" name="user_mobile" placeholder=""/>
-                    <div class="ajax">
-                        (ajax) 잘못된 형식의 비밀번호입니다.
-                    </div>
+                    <input type="text" class="input1" name="user_pw" placeholder=""/>
                 </div>
             </div>
         </div>
         <!-- 하단 확인 버튼 -->
         <div class="btn flex">
-            <button type="button" class="btn-style" onclick="location.href='@{updateUserPw.html}'">확인</button>
+            <button type="submit" class="btn-style" >확인</button>
         </div>
+        </form>
     </div>
     
     <!-- footer 영역 -->

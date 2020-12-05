@@ -32,7 +32,7 @@ public class userDaoService {
      * 로그인
      */
     public boolean login(user user) {
-        if (user.getUser_pw().equals(repository.findByUserId(user.getUser_id()))) {
+        if (user.getUser_pw().equals(repository.findByUserPw(user.getUser_id()))) {
             return true; // login success
         }
 
@@ -40,7 +40,7 @@ public class userDaoService {
     }
 
     public String loginPwdChk(user user) {
-        String pass = repository.findByUserId(user.getUser_id()); // pass = 유저의 암호화된 비밀번호
+        String pass = repository.findByUserPw(user.getUser_id()); // pass = 유저의 암호화된 비밀번호
 
         return pass; // login fail
     }
@@ -49,10 +49,50 @@ public class userDaoService {
      *  idCheck
      */
     public int idCheck(String user_id) {
-        if (repository.findByUserIds(user_id) == null) {
+        if (repository.findByUseridIsTrue(user_id) == null) {
             return 0; // id is unique
         }
         return 1; // id is reduplicated
+    }
+
+    /**
+     *  mobileCheck
+     */
+    public String mobileCheck(String user_mobile){
+        if(repository.findByUserMobile(user_mobile) == null){
+            return "0";  // is not exist
+        }
+        return repository.findByUserMobile(user_mobile);   // exist
+    }
+
+    /**
+     * findId
+     */
+    public String findId(String user_mobile){
+        if(repository.findByUserId(user_mobile) == null){
+            return "0";  // is not exist
+        }
+        return repository.findByUserId(user_mobile);   // exist
+    }
+
+    /**
+     *  mobileCheck2
+     */
+    public String mobileCheck2(String user_mobile){
+        if(repository.findByUserMobile2(user_mobile) == null){
+            return "0";  // is not exist
+        }
+        return repository.findByUserMobile2(user_mobile);   // exist
+    }
+
+    /**
+     * setNewPassword
+     */
+    public void setNewPass(user user){
+        String password = user.getUser_pw();
+        user = repository.findByUser(user.getUser_id());
+        user.setUser_pw(password);
+        repository.save(user);
     }
 }
 

@@ -102,16 +102,38 @@ public class userController {
         return "afterLogin/mainPage";  // success
     }
 
+    @PostMapping(value = "/findID")
+    public @ResponseBody user findID(@RequestParam("user_mobile") String user_mobile) {
+        user user = new user();
+        System.out.println(service.findId(user_mobile));
+        user.setUser_id(service.findId(user_mobile));
+        return user;
+
+    }
+
     @GetMapping(value = "/findID")
-    public String findID() {
+    public String findIDForm() {
 
         return "/signup/findID";
     }
+
+    @GetMapping(value = "/findIDResult")
+    public String findIDResult(@RequestParam String user_id,Model model) {
+        model.addAttribute("user_id",user_id);
+        return "/signup/findIDResult";
+    }
+
 
     @GetMapping(value = "/findPwd")
     public String findPwd() {
 
         return "/signup/findPwd";
+    }
+
+    @GetMapping(value = "/findPwdResult")
+    public String findPwdResult(@RequestParam("user_id") String user_id, Model model ) {
+        model.addAttribute("user_id",user_id);
+        return "/signup/findPwdResult";
     }
 
     @GetMapping(value = "/afterLogin")
@@ -131,4 +153,30 @@ public class userController {
 
     }
 
+    @GetMapping(value = "/mobileCheck")
+    public @ResponseBody user mobileCheckGetName(@RequestParam("user_mobile") String user_mobile){
+        user user = new user();
+        user.setUser_name(service.mobileCheck(user_mobile));
+        return user;
+    }
+
+    @GetMapping(value = "/mobileCheck2")
+    public @ResponseBody user mobileCheckGetId(@RequestParam("user_mobile") String user_mobile){
+        user user = new user();
+        user.setUser_id(service.mobileCheck2(user_mobile));
+        return user;
+    }
+
+    @PostMapping(value="/pass")
+    public void setUpdatePass(@ModelAttribute user user){
+        System.out.println("암호화 전 비밀번호 = " + user.getUser_pw());
+
+        String password = passwordEncoder.encode(user.getUser_pw()); // 비밀번호를 암호화
+        user.setUser_pw(password);
+
+        System.out.println("암호화 후 비밀번호 = " + password);
+
+       user.setUser_pw(password);
+       service.setNewPass(user);
+    }
 }

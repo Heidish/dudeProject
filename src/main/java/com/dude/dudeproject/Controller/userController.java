@@ -171,7 +171,7 @@ public class userController {
         return user;
     }
 
-    @PostMapping(value="/pass")
+    @PostMapping(value="/pass") // 비밀번호 찾기
     public String setUpdatePass(@ModelAttribute user user){
         System.out.println("암호화 전 비밀번호 = " + user.getUser_pw());
 
@@ -185,6 +185,23 @@ public class userController {
        return "/signup/login";
     }
 
+    @PostMapping(value="/newpass") // 비밀번호 재설정
+    public String setNewUpdatePass(HttpServletRequest request,@ModelAttribute user user){
+        HttpSession session = request.getSession(false);
+
+        System.out.println("암호화 전 비밀번호 = " + user.getUser_pw());
+
+        String password = passwordEncoder.encode(user.getUser_pw()); // 비밀번호를 암호화
+        user.setUser_pw(password);
+
+        System.out.println("암호화 후 비밀번호 = " + password);
+
+        service.setNewPass(user);
+        session.invalidate();
+
+        return "/signup/login";
+    }
+
     @GetMapping(value ="/logout")
     public String logout(HttpServletRequest request){
         HttpSession session = request.getSession(true);
@@ -194,6 +211,7 @@ public class userController {
 
     @GetMapping(value = "/account")
     public String myAccount(){
+        // qr 
 
         return "/afterLogin/myAccount";
     }
@@ -214,24 +232,47 @@ public class userController {
     public String chkPass(HttpServletRequest request, @RequestParam String user_pw) throws Exception {
         HttpSession session = request.getSession(false);
         String user_id = (String) session.getAttribute("id");
+
         user user= new user();
         user.setUser_id(user_id);
+        user.setUser_pw(user_pw);
+
         String password = service.loginPwdChk(user);
         System.out.println("로그인 페이지에서 사용자가 입력한 비밀번호 : " + user.getUser_pw());
         System.out.println("db에 저장된 암호화된 비밀번호 : " + password);
 
-        boolean pwdMatch = passwordEncoder.matches(user.getUser_pw(), password);
+        boolean pwdMatch = passwordEncoder.matches(user_pw, password);
 
         if (!service.login(user) && pwdMatch == false) {
-            throw new Exception();  //에러 페이지 제어 필요
+            throw new Exception();
         }
-        session.invalidate();
         return "/afterLogin/updateUserPw";
     }
 
     @GetMapping(value = "/updateMobile")
-    public String updateMobile(){
+    public String updateMobileFrom(){
+    //setNewMobile
+
 
         return "/afterLogin/updateUserMobile";
+    }
+
+    @PostMapping(value = "/updateMobile")
+    public String updateMobile(HttpServletRequest request, @ModelAttribute user user){
+        System.out.println("mobile : "+user.getUser_mobile());
+        HttpSession session = request.getSession(false);
+        String user_id = (String) session.getAttribute("id");
+        System.out.println("id : "+user_id);
+        user.setUser_id(user_id);
+
+        service.setNewMobile(user);
+
+        return "/afterLogin/mainPage";
+    }
+
+    @GetMapping(value = "/updatepw")
+    public String updatePw(){
+
+        return "/afterLogin/updateUserPw";
     }
 }

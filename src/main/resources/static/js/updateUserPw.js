@@ -68,8 +68,10 @@ function setPass(){
         user_pw : document.querySelector('input[name="user_pw"]').value
     }
     alert(document.querySelector('input[name="user_id"]').value)
+    alert(document.querySelector('input[name="user_pw"]').value)
+
     $.ajax({
-        "url": '/user/pass',
+        "url": '/user/newpass',
         "type": 'post',
         "data" : form,
         "success" : function (data){

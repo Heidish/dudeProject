@@ -108,5 +108,15 @@ public class userDaoService {
         System.out.println(user.toString());
         repository.save(user);
     }
+
+    /**
+     * setNewMobile
+     */
+    public user readAccount(user user){
+        user = repository.findByUser(user.getUser_id());
+        System.out.println(user.toString());
+
+        return user;
+    }
 }
 

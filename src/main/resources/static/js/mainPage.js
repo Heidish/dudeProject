@@ -46,6 +46,7 @@ $(function (){
             "type":'post',
             "data":time,
             "succes":function (){
+                document.querySelector('input[name="time_set_home"]').innerHTML = time
                 alert('수정되었습니다.')
             }
         })

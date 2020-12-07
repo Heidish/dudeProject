@@ -104,6 +104,8 @@ public class userController {
         HttpSession session = request.getSession(true);
         session.setAttribute("id", user.getUser_id());
 
+        //id 값으로 ++  +전체 timer 받아오고 model에 저장
+
         return "afterLogin/mainPage";  // success
     }
 
@@ -204,14 +206,19 @@ public class userController {
 
     @GetMapping(value ="/logout")
     public String logout(HttpServletRequest request){
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession(false);
         session.invalidate();
         return "/signup/login";
     }
 
     @GetMapping(value = "/account")
-    public String myAccount(){
-        // qr 
+    public String myAccount(HttpServletRequest request, @ModelAttribute user user, Model model){
+        // qr 추후에 추가
+        HttpSession session = request.getSession(false);
+        user.setUser_id((String)session.getAttribute("id"));
+        user = service.readAccount(user);
+
+        model.addAttribute("user",user);
 
         return "/afterLogin/myAccount";
     }

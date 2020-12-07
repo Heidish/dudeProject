@@ -96,5 +96,17 @@ public class userDaoService {
         user.setUser_pw(password);
         repository.save(user);
     }
+
+    /**
+     * setNewMobile
+     */
+    public void setNewMobile(user user){
+        String user_mobile = user.getUser_mobile();
+        user = repository.findByUser(user.getUser_id());
+        System.out.println(user.toString());
+        user.setUser_mobile(user_mobile);
+        System.out.println(user.toString());
+        repository.save(user);
+    }
 }
 

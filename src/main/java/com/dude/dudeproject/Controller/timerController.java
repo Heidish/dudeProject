@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,11 +31,22 @@ public class timerController {
 
     private static final Logger logger = LogManager.getLogger(userController.class);
 
-    @GetMapping(value = "/setTimer")
-    public String setTimer(@ModelAttribute timer timer, HttpServletRequest request) {
+    @PostMapping(value = "/setTimer")
+    public @ResponseBody String setTimer(@RequestParam(value = "time_set_home") String setTime,
+                                         HttpServletRequest request,
+                                         @ModelAttribute timer timer) throws Exception {
+
         HttpSession session = request.getSession(false);
         String user_id = (String) session.getAttribute("id");
 
+        timer.setTime_set_home(setTime);
+        service.save(timer, user_id);
+
+        // set_timer_tbl 컬럼 중 당분간 time_set_home 만 사용함. (time_set_away 는 나중에 사용할 예정)
+//        String hour = setTime.substring(0, 2);
+//        System.out.println("시간 : " + hour);
+//        String minute = setTime.substring(3, 5);
+//        System.out.println("분 : " + minute);
 
 
         return "signup/login";

@@ -123,7 +123,7 @@ public class userController {
     }
 
     @GetMapping(value = "/findIDResult")
-    public String findIDResult(@RequestParam String user_id,Model model) {
+    public String findIDResult(@RequestParam String user_id, Model model) {
         model.addAttribute("user_id",user_id);
         return "/signup/findIDResult";
     }

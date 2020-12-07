@@ -46,8 +46,7 @@ $(function (){
             "type":'post',
             "data":time,
             "succes":function (){
-                console.log()
-
+                alert('수정되었습니다.')
             }
         })
     })

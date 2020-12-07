@@ -172,7 +172,7 @@ public class userController {
     }
 
     @PostMapping(value="/pass")
-    public void setUpdatePass(@ModelAttribute user user){
+    public String setUpdatePass(@ModelAttribute user user){
         System.out.println("암호화 전 비밀번호 = " + user.getUser_pw());
 
         String password = passwordEncoder.encode(user.getUser_pw()); // 비밀번호를 암호화
@@ -180,8 +180,9 @@ public class userController {
 
         System.out.println("암호화 후 비밀번호 = " + password);
 
-       user.setUser_pw(password);
        service.setNewPass(user);
+       
+       return "/signup/login";
     }
 
     @GetMapping(value ="/logout")
@@ -214,7 +215,6 @@ public class userController {
         HttpSession session = request.getSession(false);
         String user_id = (String) session.getAttribute("id");
         user user= new user();
-        user.setUser_pw(user_pw);
         user.setUser_id(user_id);
         String password = service.loginPwdChk(user);
         System.out.println("로그인 페이지에서 사용자가 입력한 비밀번호 : " + user.getUser_pw());
@@ -225,7 +225,7 @@ public class userController {
         if (!service.login(user) && pwdMatch == false) {
             throw new Exception();  //에러 페이지 제어 필요
         }
-
+        session.invalidate();
         return "/afterLogin/updateUserPw";
     }
 

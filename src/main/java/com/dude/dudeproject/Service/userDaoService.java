@@ -58,8 +58,15 @@ public class userDaoService {
     }
 
     /**
-     *  mobileCheck
-     */
+     * scanController Receiver 회원여부 체크
+     * **/
+    public int regChk(String user_no){
+        if(repository.findByUserId(user_no) == null){
+            return 0;
+        }
+        return 1;
+    }
+
     public String mobileCheck(String user_mobile){
         if(repository.findByUserMobile(user_mobile) == null){
             return "0";  // is not exist

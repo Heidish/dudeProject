@@ -40,13 +40,17 @@ function inputTimeColon(time) {
 
 $(function (){
     $('#set_time').on('click',function (){
-        const time = document.querySelector('input[name="time_set_home"]').value
+        const time_set_home = document.querySelector('input[name="time_set_home"]').value
+        const form = {
+            time_set_home: time_set_home
+        }
+        console.log(time_set_home)
         $.ajax({
-            "url":'/timer/setTimer',
-            "type":'post',
-            "data":time,
-            "succes":function (){
-                document.querySelector('input[name="time_set_home"]').innerHTML = time
+            "url" : '/timer/setTimer',
+            "type" : 'post',
+            "data" : form,
+            "success" : function (data){
+                document.querySelector('input[name="time_set_home"]').innerHTML = data.getTime_set_home
                 alert('수정되었습니다.')
             }
         })

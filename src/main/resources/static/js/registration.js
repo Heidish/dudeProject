@@ -1,7 +1,30 @@
 //<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-
+// registration.html
 let arrayValid = new Array()
+
+// 이름 한글만 입력
+$(function (){
+    $('input[name=user_name]').blur(function (){
+        const user_name = document.querySelector('input[name="user_name"]').value
+        const pattern_num = /[0-9]/;	// 숫자
+        const pattern_eng = /[a-zA-Z]/;	// 문자
+        const pattern_spc = /[~!@#$%^&*()+|<>?:{}]/; // 특수문자
+        const pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
+
+        if(user_name.length<2 || user_name.length>5 || !pattern_kor.test(user_name) || pattern_num.test(user_name) ||  pattern_eng.test(user_name) || pattern_spc.test(user_name)){
+            $('#name-valid').text('2~5 자 이내의 한글만 사용 가능합니다.')
+            $('#name-valid').css('color','red')
+            $('#name-valid').attr('disabled',true)
+            arrayValid[0]=0;
+        }  else {
+            $('#name-valid').text('')
+            arrayValid[0]=1;
+        }
+
+
+    })
+})
 
 // id check id="id-valid"
 $(function (){
@@ -24,13 +47,15 @@ $(function (){
                     $('#id-valid').text('사용중인 아이디입니다.')
                     $('#id-valid').css('color','red')
                     $('#id-valid').attr('disabled',true)
+                    arrayValid[1]=0;
                 } else if(user_id.length<5 || user_id.length>20 || pattern_kor.test(user_id) || pattern_spc.test(user_id) ){
                     $('#id-valid').text('5~20자의 영문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.')
                     $('#id-valid').css('color','red')
                     $('#id-valid').attr('disabled',true)
+                    arrayValid[1]=0;
                 } else {
                     $('#id-valid').text('')
-                    arrayValid[0]=1;
+                    arrayValid[1]=1;
                 }
             },
             "fail":function (data) {
@@ -53,9 +78,10 @@ $(function (){
             $('#password-valid').text('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.')
             $('#password-valid').css('color','red')
             $('#password-valid').attr('disabled',true)
+            arrayValid[2]=0;
         } else {
             $('#password-valid').text('')
-            arrayValid[1]=1;
+            arrayValid[2]=1;
         }
     })
 })
@@ -69,9 +95,10 @@ $(function (){
             $('#password-check').text('비밀번호가 일치하지 않습니다.')
             $('#password-check').css('color','red')
             $('#password-check').attr('disabled',true)
+            arrayValid[3]=0;
         } else {
             $('#password-check').text('')
-            arrayValid[2]=1;
+            arrayValid[3]=1;
         }
     })
 })
@@ -85,9 +112,10 @@ $(function (){
             $('#phone-valid').text('형식이 일치하지 않습니다.')
             $('#phone-valid').css('color','red')
             $('#phone-valid').attr('disabled',true)
+            arrayValid[4]=0;
         } else {
             $('#phone-valid').text('')
-            arrayValid[3]=1;
+            arrayValid[4]=1;
         }
     })
 })
@@ -126,16 +154,17 @@ $(function (){ // 인증번호 확인 버튼 누르기
             $('#verification-check').text('인증번호가 일치하지 않습니다.')
             $('#verification-check').css('color','red')
             $('#verification-check').attr('disabled',true)
+            arrayValid[5]=0;
         } else {
             $('#verification-check').text('')
-            arrayValid[4]=1;
+            arrayValid[5]=1;
             alert("인증되었습니다.")
         }
     })
 })
 
 // 회원가입 버튼
-$(function (){ // 인증번호 확인 버튼 누르기
+$(function (){
     $('#registration_button').on('click',function (){
         let check = 0;
         for(let i=0; i<arrayValid.length; i++){
@@ -148,7 +177,7 @@ $(function (){ // 인증번호 확인 버튼 누르기
         if(check ==5){
             add()
         } else{
-            alert("다시 확인해주세요.")
+            alert("입력 사항을 다시 확인해주세요.")
         }
         })
 })
@@ -165,10 +194,11 @@ function add(){ // 인증번호 버튼 누르기
         "type": 'post',
         "data" : form,
         "success" : function (data){
-            location.href='/user/login'
+            window.location.href='/user/login'
         },
         "fail":function (){
             alert("다시 시도해주세요.")
         }
     })
     }
+

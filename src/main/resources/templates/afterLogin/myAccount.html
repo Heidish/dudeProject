@@ -60,16 +60,18 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <a th:href="@{/signUp/login.html}">
+        <a th:href="@{/user/main}">
             <img class="logo" th:src="@{/images/logo.png}"/>
         </a>
     </div>
 
     <!-- contents 영역 -->
     <div class="contents">
-            <div class="logout">
-                <button type="button" class="logout-btn" onclick="location.href='#'">LOGOUT</button>
-            </div>
+        <span th:if="${session.id != null}">
+          <div class="logout">
+           <button type="button" class="btn-style" onclick="location.href='/user/logout'">LOGOUT</button>
+          </div>
+        </span>
         <!-- 이쯤 form 태그 위치해야 하는데, 페이지 이동 쉽게 보여주려고 지금 안넣었음 -->
             <!-- 상단 QR 영역 -->
             <div class="">
@@ -97,7 +99,7 @@
                         비밀번호
                     </label>
                     <div class="info-cnt">
-                        <button type="button" class="btn-style" onclick="location.href='@{checkPw.html}'">비밀번호 수정</button>
+                        <button type="button" class="btn-style" onclick="location.href='/user/chkPass'">비밀번호 수정</button>
                     </div>
                 </div>
                 <div class="info-box flex">
@@ -106,13 +108,13 @@
                     </label>
                     <div class="info-cnt">
                         010-9974-4914
-                        <button type="button" class="btn-style" onclick="location.href='@{updateUserMobile.html}'">수정</button>
+                        <button type="button" class="btn-style" onclick="location.href='/user/updateMobile'">수정</button>
                     </div>
                 </div>
             </div>
             <!-- 하단 확인 버튼 -->
             <div class="btn flex">
-                <button type="button" class="btn-style" onclick="location.href='@{mainPage.html}'">확인</button>
+                <button type="button" class="btn-style" onclick="location.href='/user/main'">확인</button>
             </div>
     </div>
 

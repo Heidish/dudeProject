@@ -53,7 +53,7 @@ $(function (){
                 check = check+1
             }
         }
-        if(check ==2){ // 3으로 변경
+        if(check ==2){
             alert(check)
             setPass()
         } else{
@@ -67,12 +67,12 @@ function setPass(){
         user_id : document.querySelector('input[name="user_id"]').value,
         user_pw : document.querySelector('input[name="user_pw"]').value
     }
-    alert(document.querySelector('input[name="user_id"]').value)
     $.ajax({
         "url": '/user/pass',
         "type": 'post',
         "data" : form,
         "success" : function (data){
+            alert('비밀번호가 수정되었습니다.')
             location.href='/user/login'
         },
         "fail":function (){

@@ -194,7 +194,7 @@ function add(){ // 인증번호 버튼 누르기
         "type": 'post',
         "data" : form,
         "success" : function (data){
-            location.href='/user/login'
+            window.location.href='/user/login'
         },
         "fail":function (){
             alert("다시 시도해주세요.")

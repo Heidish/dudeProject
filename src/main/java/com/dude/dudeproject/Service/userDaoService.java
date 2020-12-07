@@ -54,5 +54,16 @@ public class userDaoService {
         }
         return 1; // id is reduplicated
     }
+
+    /**
+     * scanController Receiver 회원여부 체크
+     * **/
+    public int regChk(String user_no){
+        if(repository.findByUserId(user_no) == null){
+            return 0;
+        }
+        return 1;
+    }
+
 }
 

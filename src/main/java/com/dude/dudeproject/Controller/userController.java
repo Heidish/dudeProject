@@ -1,14 +1,12 @@
 package com.dude.dudeproject.Controller;
 
 import com.dude.dudeproject.Domain.user;
-import com.dude.dudeproject.Repository.userRepository;
 import com.dude.dudeproject.Service.userDaoService;
 import com.dude.dudeproject.System.SmsClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

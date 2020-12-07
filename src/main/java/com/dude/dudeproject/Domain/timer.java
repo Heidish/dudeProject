@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class timer {
 
     @Id
-    private Long user_no;
+    private String user_id;
     private String time_set_home;
     private String time_set_away;
 

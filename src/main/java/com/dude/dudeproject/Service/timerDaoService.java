@@ -26,7 +26,7 @@ public class timerDaoService {
      * setTimer
      */
     public timer save(timer timer, String user_id) {
-        timer.setUser_no(repository.findByUserId(user_id));
+        timer.setUser_id(repository.findByUserId(user_id));
 
         return repository.save(timer);
     }

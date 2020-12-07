@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface userRepository extends JpaRepository<user, Long> {
+public interface userRepository extends JpaRepository<user, String> {
 
     // 아이디를 이용해 암호화비밀번호를 찾는 쿼리문
     // findPw

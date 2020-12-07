@@ -50,7 +50,7 @@ $(function (){
             "type" : 'post',
             "data" : form,
             "success" : function (data){
-                document.querySelector('input[name="time_set_home"]').innerHTML = data.getTime_set_home
+                document.querySelector('input[name="time_set_home"]').innerHTML = form.time_set_home
                 alert('수정되었습니다.')
             }
         })

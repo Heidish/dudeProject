@@ -51,6 +51,9 @@ public class userDaoService {
      *  idCheck
      */
     public int idCheck(String user_id) {
+        System.out.println(user_id);
+        String id = repository.findByUseridIsTrue(user_id) ;
+        System.out.println(id);
         if (repository.findByUseridIsTrue(user_id) == null) {
             return 0; // id is unique
         }

@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface timerRepository extends JpaRepository<timer, Long> {
 
     @Query(value = "select u.user_no from user u where u.user_id = ?1")
-    Long findByUserId(@Param("user_id") String user_id);
+    String findByUserId(@Param("user_id") String user_id);
 
 }

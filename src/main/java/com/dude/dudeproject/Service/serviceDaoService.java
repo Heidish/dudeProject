@@ -11,9 +11,9 @@ public class serviceDaoService {
     @Autowired
     serviceRepository repository;
 
-    public void findByQrNo(service service){
-        repository.findById(service.getUser_no());
-    }
+//    public void findByQrNo(service service){
+//        repository.findById(service.getUser_id());
+//    }
 
 
 }

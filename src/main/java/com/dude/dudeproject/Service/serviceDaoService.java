@@ -1,9 +1,5 @@
 package com.dude.dudeproject.Service;
 
-<<<<<<< HEAD
-=======
-import com.dude.dudeproject.Domain.service;
->>>>>>> 0fef08fc8a5e7ce7771e6732264326d13562dd62
 import com.dude.dudeproject.Repository.serviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

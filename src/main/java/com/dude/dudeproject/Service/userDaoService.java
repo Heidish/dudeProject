@@ -5,10 +5,6 @@ import com.dude.dudeproject.Repository.userRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
-import javax.servlet.http.HttpSession;
->>>>>>> 0fef08fc8a5e7ce7771e6732264326d13562dd62
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,29 +1,21 @@
 package com.dude.dudeproject.Controller;
 
 
+import com.dude.dudeproject.Domain.response;
+import com.dude.dudeproject.Service.responseDaoService;
 import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.System.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 
 
 @Controller
-@RequestMapping("/qr")
-
-
-
-@Controller
 @RequestMapping("/service")
->>>>>>> 0fef08fc8a5e7ce7771e6732264326d13562dd62
 public class serviceController {
     @Autowired
     private responseDaoService service;
@@ -100,17 +92,9 @@ public class serviceController {
 
 
 
-
-
-
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
-        return ResponseEntity.status(500).contentType(MediaType.TEXT_PLAIN).body(ex.getMessage());
-=======
     @GetMapping(value = "/response")
     public String ResponsePage(){
         return "user/userResponse";
->>>>>>> 0fef08fc8a5e7ce7771e6732264326d13562dd62
     }
 
     @PostMapping(value = "/response")
@@ -127,4 +111,5 @@ public class serviceController {
     public String ResponseTruePage(){
         return "/user/userResponseTrue";
     }
+
 }

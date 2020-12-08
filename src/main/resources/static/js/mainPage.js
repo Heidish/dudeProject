@@ -17,6 +17,8 @@ function inputTimeColon(time) {
             $('#time-valid').attr('disabled',true)
             time.value = "00:00"
             return false
+        }else{
+             $('#time-valid').text('')
         }
         // 두 변수의 시간과 분을 합쳐 입력한 시간이 24시가 넘는지를 체크한다.
         if(hours + minute > 2400) {
@@ -25,6 +27,8 @@ function inputTimeColon(time) {
             $('#time-valid').attr('disabled',true)
             time.value = "24:00"
             return false
+        }else{
+             $('#time-valid').text('')
         }
         // 입력한 분의 값이 60분을 넘는지 체크한다.
         if(minute > 60) {
@@ -33,6 +37,8 @@ function inputTimeColon(time) {
             $('#time-valid').attr('disabled',true)
             time.value = hours + ":00";
             return false;
+        }else{
+             $('#time-valid').text('')
         }
         time.value = hours + ":" + minute;
     }
@@ -50,8 +56,8 @@ $(function (){
             "type" : 'post',
             "data" : form,
             "success" : function (data){
-                document.querySelector('input[name="time_set_home"]').innerHTML = form.time_set_home
                 alert('수정되었습니다.')
+                window.opener.location.reload();
             }
         })
     })

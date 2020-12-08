@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class timerController {
 
+    @Autowired
     timerDaoService service;
     PasswordEncoder passwordEncoder;
 
@@ -35,6 +36,9 @@ public class timerController {
 
         HttpSession session = request.getSession(false);
         String user_id = (String) session.getAttribute("id");
+
+        System.out.println("시간설정 id : " + user_id);
+        System.out.println("시간설정 time : " + setTime);
 
         timer.setTime_set_home(setTime);
         service.save(timer, user_id);

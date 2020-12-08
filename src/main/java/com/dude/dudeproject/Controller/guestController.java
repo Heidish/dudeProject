@@ -1,5 +1,6 @@
 package com.dude.dudeproject.Controller;
 
+
 import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Repository.userRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("target")
+
 public class guestController {
 
     @Autowired

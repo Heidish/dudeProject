@@ -20,13 +20,10 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class userController {
 
-//    @Autowired
-//    private userDaoService service;
-//
-//    private BCryptPasswordEncoder pwdEncoder;
+    @Autowired
+    private userDaoService service;
 
-    userDaoService service;
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public userController(userDaoService service, PasswordEncoder passwordEncoder) {
@@ -38,13 +35,6 @@ public class userController {
 
     private static final Logger logger = LogManager.getLogger(userController.class);
 
-//    @GetMapping("/")
-//    public String startPage() {
-//        logger.info("LogManager's logger : logging test");
-//        System.out.println(logger.equals(log));
-//
-//        return "index";
-//    }
 
     @GetMapping(value = "/login")
     public String loginPage(@ModelAttribute user user, Model model) {
@@ -89,23 +79,34 @@ public class userController {
     }
 
     @PostMapping(value = "/login")
-    public String login(@ModelAttribute user user, HttpServletRequest request) throws Exception {
+    public String login(@ModelAttribute user user, HttpServletRequest request, Model model) throws Exception {
         String password = service.loginPwdChk(user);
-        System.out.println("로그인 페이지에서 사용자가 입력한 비밀번호 : " + user.getUser_pw());
-        System.out.println("db에 저장된 암호화된 비밀번호 : " + password);
 
         boolean pwdMatch = passwordEncoder.matches(user.getUser_pw(), password);
 
         if (!service.login(user) && pwdMatch == false) {
-            throw new Exception();
+            model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
+            model.addAttribute("url", "/signup/login");
         }
+
         HttpSession session = request.getSession(true);
         session.setAttribute("id", user.getUser_id());
+        String user_id = (String) session.getAttribute("id");
 
-        //id 값으로  +전체 timer 받아오고 model에 저장
-//        Stng setTime = service.ri
 
-        return "afterLogin/mainPage";  // success
+        String setTime = service.getTime(user_id);
+        if(setTime != null) {
+            String hour = setTime.substring(0, 2);
+            String min = setTime.substring(3, 5);
+
+            String time = hour + ":" + min;
+
+
+            model.addAttribute("setTime", time);
+        }
+        return "/afterLogin/mainPage";
+
+
     }
 
     @PostMapping(value = "/findID")
@@ -114,7 +115,6 @@ public class userController {
         System.out.println(service.findId(user_mobile));
         user.setUser_id(service.findId(user_mobile));
         return user;
-
     }
 
     @GetMapping(value = "/findID")
@@ -143,8 +143,8 @@ public class userController {
     }
 
     @GetMapping(value = "/afterLogin")
-    public String afterLogin() {
-
+    public String afterLogin(Model model) {
+    System.out.println("model"+ model.getAttribute("setTime"));
         return "/afterLogin/mainPage";
     }
 
@@ -223,8 +223,19 @@ public class userController {
     }
 
     @GetMapping(value = "/main")
-    public String goMain(){
+    public String goMain(@ModelAttribute user user, HttpServletRequest request, Model model){
+        HttpSession session = request.getSession(false);
+        String user_id = (String) session.getAttribute("id");
 
+        String setTime = service.getTime(user_id);
+        if(setTime != null) {
+            String hour = setTime.substring(0, 2);
+            String min = setTime.substring(3, 5);
+
+            String time = hour + ":" + min;
+
+            model.addAttribute("setTime", time);
+        }
         return "/afterLogin/mainPage";
     }
 

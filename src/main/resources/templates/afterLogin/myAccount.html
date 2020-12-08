@@ -60,7 +60,7 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <a th:href="@{/signUp/login.html}">
+        <a th:href="@{/user/main}">
             <img class="logo" th:src="@{/images/logo.png}"/>
         </a>
     </div>
@@ -91,7 +91,7 @@
                         아이디
                     </label>
                     <div class="info-cnt">
-                        testuser
+                        <p th:text="${user.user_id}"></p>
                     </div>
                 </div>
                 <div class="info-box flex">
@@ -104,10 +104,18 @@
                 </div>
                 <div class="info-box flex">
                     <label class="info-ttl">
-                        전화번호
+                        이름
                     </label>
                     <div class="info-cnt">
-                        010-9974-4914
+                        <p th:text="${user.user_name}"></p>
+                    </div>
+                </div>
+                <div class="info-box flex">
+                    <label class="info-ttl">
+                        전화번호
+                    </label>
+                    <div class="info-cnt flex">
+                        <p th:text="${user.user_mobile}"></p>
                         <button type="button" class="btn-style" onclick="location.href='/user/updateMobile'">수정</button>
                     </div>
                 </div>

@@ -51,6 +51,9 @@ public class userDaoService {
      *  idCheck
      */
     public int idCheck(String user_id) {
+        System.out.println(user_id);
+        String id = repository.findByUseridIsTrue(user_id) ;
+        System.out.println(id);
         if (repository.findByUseridIsTrue(user_id) == null) {
             return 0; // id is unique
         }
@@ -58,8 +61,15 @@ public class userDaoService {
     }
 
     /**
-     *  mobileCheck
-     */
+     * scanController Receiver 회원여부 체크
+     * **/
+    public int regChk(String user_no){
+        if(repository.findByUserId(user_no) == null){
+            return 0;
+        }
+        return 1;
+    }
+
     public String mobileCheck(String user_mobile){
         if(repository.findByUserMobile(user_mobile) == null){
             return "0";  // is not exist
@@ -95,6 +105,33 @@ public class userDaoService {
         user = repository.findByUser(user.getUser_id());
         user.setUser_pw(password);
         repository.save(user);
+    }
+
+    /**
+     * setNewMobile
+     */
+    public void setNewMobile(user user){
+        String user_mobile = user.getUser_mobile();
+        user = repository.findByUser(user.getUser_id());
+        System.out.println(user.toString());
+        user.setUser_mobile(user_mobile);
+        System.out.println(user.toString());
+        repository.save(user);
+    }
+
+    /**
+     * setNewMobile
+     */
+    public user readAccount(user user){
+        user = repository.findByUser(user.getUser_id());
+        System.out.println(user.toString());
+
+        return user;
+    }
+
+    public String getTime(String id) {
+
+        return repository.
     }
 }
 

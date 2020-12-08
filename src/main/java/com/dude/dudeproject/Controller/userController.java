@@ -20,13 +20,10 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class userController {
 
-//    @Autowired
-//    private userDaoService service;
-//
-//    private BCryptPasswordEncoder pwdEncoder;
+    @Autowired
+    private userDaoService service;
 
-    userDaoService service;
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public userController(userDaoService service, PasswordEncoder passwordEncoder) {
@@ -96,14 +93,16 @@ public class userController {
         session.setAttribute("id", user.getUser_id());
         String user_id = (String) session.getAttribute("id");
 
+
         String setTime = service.getTime(user_id);
-        String hour = setTime.substring(0, 2);
-        String min = setTime.substring(3, 5);
+        if(setTime != null) {
+            String hour = setTime.substring(0, 2);
+            String min = setTime.substring(3, 5);
 
-        String time = hour + ":" + min;
+            String time = hour + ":" + min;
 
-        model.addAttribute("setTime", time);
-
+            model.addAttribute("setTime", time);
+        }
         return "/afterLogin/mainPage";
 
     }
@@ -222,8 +221,19 @@ public class userController {
     }
 
     @GetMapping(value = "/main")
-    public String goMain(){
+    public String goMain(@ModelAttribute user user, HttpServletRequest request, Model model){
+        HttpSession session = request.getSession(false);
+        String user_id = (String) session.getAttribute("id");
 
+        String setTime = service.getTime(user_id);
+        if(setTime != null) {
+            String hour = setTime.substring(0, 2);
+            String min = setTime.substring(3, 5);
+
+            String time = hour + ":" + min;
+
+            model.addAttribute("setTime", time);
+        }
         return "/afterLogin/mainPage";
     }
 

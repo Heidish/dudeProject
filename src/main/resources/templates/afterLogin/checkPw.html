@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" media="screen" href="/css/commons.css">
 <link rel="stylesheet" type="text/css" media="screen" href="/css/.css">
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/js/checkPw.js"></script>
 <style>
     .title {
         font-weight: bold;
@@ -52,7 +53,7 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <a th:href="@{/signUp/login.html}">
+        <a th:href="@{/user/main}">
             <img class="logo" th:src="@{/images/logo.png}"/>
         </a>
     </div>
@@ -71,18 +72,17 @@
                 <div class="mobile-ttl">
                     현재 비밀번호
                 </div>
+        <form method="post" action="/user/chkPass">
                 <div class="mobile-input">
-                    <input type="text" class="input1" name="user_mobile" placeholder=""/>
-                    <div class="ajax">
-                        (ajax) 잘못된 형식의 비밀번호입니다.
-                    </div>
+                    <input type="password" class="input1" name="user_pw" placeholder=""/>
                 </div>
             </div>
         </div>
         <!-- 하단 확인 버튼 -->
         <div class="btn flex">
-            <button type="button" class="btn-style" onclick="location.href='@{updateUserPw.html}'">확인</button>
+            <button type="button" class="btn-style" id="check_pw">확인</button>
         </div>
+        </form>
     </div>
     
     <!-- footer 영역 -->
@@ -93,7 +93,6 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   

@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface serviceRepository extends JpaRepository<service, Long> {
 
 
-
     @Query(value= "insert into service_tbl (user_id, target_qr_no) values ('ygk1204', :target_qr_no )", nativeQuery = true)
     String getTarget_qr_no (@Param("target_qr_no") String target_qr_no);
 
@@ -24,7 +23,5 @@ public interface serviceRepository extends JpaRepository<service, Long> {
 
     @Query(value = "select target_qr_no from service where user_id=?1")
     String idCheck(@Param("user_id") String user_id);
-
-
 
 }

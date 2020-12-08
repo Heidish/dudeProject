@@ -1,5 +1,6 @@
 package com.dude.dudeproject.Controller;
 
+
 import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.System.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,16 @@ import java.io.OutputStream;
 
 @Controller
 @RequestMapping("/qr")
+
+
+
+@Controller
+@RequestMapping("/service")
+>>>>>>> 0fef08fc8a5e7ce7771e6732264326d13562dd62
 public class serviceController {
+    @Autowired
+    private responseDaoService service;
+
 
     @Autowired
     private serviceDaoService serviceDaoService;
@@ -96,7 +106,25 @@ public class serviceController {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
         return ResponseEntity.status(500).contentType(MediaType.TEXT_PLAIN).body(ex.getMessage());
+=======
+    @GetMapping(value = "/response")
+    public String ResponsePage(){
+        return "user/userResponse";
+>>>>>>> 0fef08fc8a5e7ce7771e6732264326d13562dd62
     }
 
+    @PostMapping(value = "/response")
+    public String saveResponse(@ModelAttribute response response){
+        System.out.println("사용자가 응답한 num : " + response.getUser_response());
+        System.out.println("사용자 ID : " + response.getUser_id());
 
+        service.create(response);
+
+        return "/user/userResponseTrue";     //어디로든 보내놓고 어차피 아래꺼로 내려옴
+    }
+
+    @GetMapping(value = "/responseTrue")
+    public String ResponseTruePage(){
+        return "/user/userResponseTrue";
+    }
 }

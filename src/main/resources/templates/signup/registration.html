@@ -10,91 +10,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" media="screen" href="/css/commons.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<!--<script type="text/javascript" src="/static/js/registration.js"></script>-->
-    <script>
-        $(function (){
-            $('input[name=user_id]').blur(function (){
-                const user_id = document.querySelector('input[name="user_id"]').value
-                const pattern_num = /[0-9]/;	// 숫자
-                const pattern_eng = /[a-zA-Z]/;	// 문자
-                const pattern_spc = /[~!@#$%^&*()+|<>?:{}]/; // 특수문자
-                const pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
-                const form = {
-                    user_id: user_id
-                }
-                $.ajax({
-                    "url": '/user/idCheck' ,
-                    "type": 'get',
-                    "data" : form,
-                    "success" : function (data){
-                        console.log(data)
-                        if(data === 1){
-                            //document.getElementsById('id-valid').innerHTML='중복된 아이디입니다.'
-                            $('#id-valid').text('사용중인 아이디입니다.')
-                            $('#id-valid').css('color','red')
-                            $('#id-valid').attr('disabled',true)
-                        } else if(user_id.length<5 || user_id.length>20 || pattern_kor.test(user_id) || pattern_spc.test(user_id) ){
-                            $('#id-valid').text('5~20자의 영문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.')
-                            $('#id-valid').css('color','red')
-                            $('#id-valid').attr('disabled',true)
-                        } else {
-                            $('#id-valid').text(' ')
-                        }
-                    },
-                    "fail":function (data) {
-                        console.log(data)
-                        alert("fail")
-                    }
-                })
-            })
-        })
+<script src="/js/registration.js"></script>
 
-        $(function (){
-            $('input[name=user_pw]').blur(function (){
-                const user_pw = document.querySelector('input[name="user_pw"]').value
-                const pattern_num = /[0-9]/;	// 숫자
-                const pattern_eng = /[a-zA-Z]/;	// 문자
-                const pattern_spc = /[~!@#$%^&*()+|<>?:{}]/; // 특수문자
-
-                if(user_pw.length<8 || user_pw.length>16 || !pattern_num.test(user_pw) || !pattern_spc.test(user_pw) || !pattern_eng.test(user_pw)){
-                $('#password-valid').text('8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.')
-                $('#password-valid').css('color','red')
-                $('#password-valid').attr('disabled',true)
-                } else {
-                $('#password-valid').text(' ')
-                }
-            })
-        })
-
-        $(function (){
-            $('input[name=user_pw_check]').blur(function (){
-                const user_pw_check = document.querySelector('input[name="user_pw_check"]').value
-                const user_pw = document.querySelector('input[name="user_pw"]').value
-                if(user_pw_check != user_pw){
-                    $('#password-check').text('비밀번호가 일치하지 않습니다.')
-                    $('#password-check').css('color','red')
-                    $('#password-check').attr('disabled',true)
-                } else {
-                    $('#password-check').text(' ')
-                }
-            })
-        })
-
-        $(function (){
-            $('input[name=user_mobile]').blur(function (){
-                const user_mobile = document.querySelector('input[name="user_mobile"]').value
-                console.log(user_mobile)
-                const pattern_num = /[0-9]/;	// 숫자
-                if(user_mobile.length !=11 || !pattern_num.test(user_mobile)){
-                    $('#phone-valid').text('형식이 일치하지 않습니다.')
-                    $('#phone-valid').css('color','red')
-                    $('#phone-valid').attr('disabled',true)
-                } else {
-                    $('#phone-valid').text(' ')
-                }
-            })
-        })
-    </script>
 <style>
     .info {
         margin: 50px;
@@ -160,6 +77,8 @@
                     </label>
                     <div class="info-cnt">
                         <input type="text" th:field="*{user_name}" class="inputbox" name="user_name" placeholder="실명을 기입해 주세요." required="required"/>
+                        <div class="ajax" id="name-valid">
+                        </div>
                     </div>
                 </div>
                 <div class="info-box flex">
@@ -168,17 +87,17 @@
                     </label>
                     <div class="info-cnt">
                         <input type="text" th:field="*{user_id}" class="inputbox" name="user_id" placeholder="아이디를 입력해주세요." required="required"/>
-                        <div class="valid" id="id-valid">
-
+                        <div class="ajax" id="id-valid">
                         </div>
                     </div>
                 </div>
                 <div class="info-box flex">
                     <label class="info-ttl">
                         비밀번호
+
                     </label>
                     <div class="info-cnt">
-                        <input type="text" th:field="*{user_pw}" class="inputbox" name="user_pw" placeholder="비밀번호를 입력해주세요." required="required"/>
+                        <input type="password" th:field="*{user_pw}" class="inputbox" name="user_pw" placeholder="비밀번호를 입력해주세요." required="required"/>
                         <div class="ajax" id="password-valid">
 
                         </div>
@@ -189,7 +108,7 @@
                         비밀번호 확인
                     </label>
                     <div class="info-cnt">
-                        <input type="text" class="inputbox"  name="user_pw_check" placeholder="비밀번호를 한번 더 입력해주세요."/>
+                        <input type="password" class="inputbox"  name="user_pw_check" placeholder="비밀번호를 한번 더 입력해주세요."/>
                         <div class="ajax" id="password-check">
                         </div>
                     </div>
@@ -206,24 +125,23 @@
 
                 </div>
                 <div class="info-box flex">
-                    <button type="button" class="btn-style1" onclick="location.href='#'">인증번호 전송</button>
+                    <button type="button" class="btn-style1" id="validation_button">인증번호 전송</button>
                 </div>
                 <div class="info-box flex">
                     <div class="info-cnt">
-                        <input type="text" class="input2" name="user_mobile" placeholder="인증번호를 입력해주세요."/>
+                        <input type="text" class="input2" name="validation_num" placeholder="인증번호를 입력해주세요."/>
                         <div class="ajax" id="verification-check">
-                            (ajax) 인증번호를 확인해주세요.
                         </div>
                     </div>
                 </div>
 
                 <div class="flex">
-                    <button type="button" class="btn-style1" onclick="location.href='#'" id="verification-confirm">확인</button>
+                    <button type="button" class="btn-style1" id="verification-confirm">확인</button>
                 </div>
             </div>
             <!-- 하단 확인 버튼 -->
             <div class="flex">
-                <input type="submit" class="btn-style1" value="회원가입"/>
+                <input type="button" class="btn-style1" value="회원가입" id="registration_button"/>
             </div>
         </form>
     </div>

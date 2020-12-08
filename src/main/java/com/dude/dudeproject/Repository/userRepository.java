@@ -42,4 +42,8 @@ public interface userRepository extends JpaRepository<user, String> {
     @Query(value = "select t.time_set_home from timer t where t.user_id = ?1")
     String findSetTime(@Param("user_id") String user_id);
 
+
+    @Query(value ="select user_id from user where user_id=?1")
+    String findByUserIds(@Param("user_id") String user_id);
+
 }

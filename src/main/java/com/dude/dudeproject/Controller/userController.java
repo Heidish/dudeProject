@@ -45,6 +45,8 @@ public class userController {
         return "signup/login";
     }
 
+
+
     @GetMapping(value = "/preRegistration")
     public String preRegPage() {
 
@@ -121,6 +123,9 @@ public class userController {
         return user;
     }
 
+
+
+
     @GetMapping(value = "/findID")
     public String findIDForm() {
 
@@ -151,6 +156,10 @@ public class userController {
     System.out.println("model"+ model.getAttribute("setTime"));
         return "/afterLogin/mainPage";
     }
+
+
+
+
 
     @GetMapping(value = "/idCheck")
     public @ResponseBody int idCheck(@RequestParam("user_id") String user_id){

@@ -5,7 +5,6 @@ import com.dude.dudeproject.Repository.userRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,7 @@ public class userDaoService {
     }
 
     /**
-     *  idCheck
+     * idCheck
      */
     public int idCheck(String user_id) {
         System.out.println(user_id);
@@ -140,5 +139,6 @@ public class userDaoService {
 
         return repository.findSetTime(user_id);
     }
+
 }
 

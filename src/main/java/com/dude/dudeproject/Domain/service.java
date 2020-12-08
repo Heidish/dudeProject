@@ -3,7 +3,6 @@ package com.dude.dudeproject.Domain;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Data
 @Table(name="service_tbl")
@@ -11,8 +10,11 @@ import java.sql.Timestamp;
 public class service {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String user_id;
+
     private String target_qr_no;
-    private Timestamp qr_registration_date;
+    private String qr_image;
+
 
 }

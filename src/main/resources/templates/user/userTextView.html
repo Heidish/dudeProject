@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,12 +13,11 @@
 
 <style>
     .announce {
-        width: 600px;
-        margin: auto;
-        padding-top: 20px;
-        font-size: 15px;
         font-weight: bold;
-        color: rgb(148, 147, 147);
+        font-size: 25px;
+        height: 70px;
+        padding-top: 15px;
+        color: black;
     }
     .announce-icon {
         margin-left: 20px;
@@ -27,6 +26,12 @@
     .txt {
         font-size: 20px;
         margin: 10px;
+    }
+    .txt-info {
+        margin: 20px;
+        font-size: 15px;
+        font-weight: bold;
+        color: black;
     }
     .time {
         font-size: 20px;
@@ -44,8 +49,24 @@
         text-align: center;
         margin: 20px;
     }
-    .msg-icon {
-        color: black;
+    .box-container {
+        margin: 70px;
+        width: 280px;
+        height: 350px;
+    }
+    .select-box {
+        width: 270px;
+        height: 45px;
+        margin: 5px;
+        font-size: 16px;
+    }
+    .input-radio {
+        margin: 10px;
+    }
+    .btn-style {
+        border: none;
+        background-color: rgb(226, 225, 225);
+        border-radius: 6px;
     }
 </style>
 <body>
@@ -62,35 +83,34 @@
     <div class="contents">
         <div class="announce flex">
             <div class="txt">
-                예정 출차 시간
+                출차 요청
             </div>
-            <div class="time">
-                16:00 AM
+        </div>
+        <div class="txt-info flex">
+            해당 차주분에게 보낼 출차 요청 메시지를 선택해주세요.
+        </div>
+        <div class="flex">
+            <div class="box-container">
+                <div class="select-box">
+                    <input type="radio" class="input-radio" name="msg" value="1" checked />
+                    지금 출차 부탁드립니다.
+                </div>
+                <div class="select-box">
+                    <input type="radio" class="input-radio" name="msg" value="1" checked />
+                    30분 뒤 출차 부탁드립니다.
+                </div>
+                <div class="select-box">
+                    <input type="radio" class="input-radio" name="msg" value="1" checked />
+                    1시간 뒤 출차 부탁드립니다.
+                </div>
+                <div class="select-box">
+                    <input type="radio" class="input-radio" name="msg" value="1" checked />
+                    2시간 뒤 출차 부탁드립니다.
+                </div>
             </div>
         </div>
         <div class="flex">
-            <div class="group">
-                <div class="message-icon">
-                    <svg width="100px" height="100px" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"/>
-                    </svg>
-                </div>
-                <div class="text">
-                    CALL
-                </div>
-            </div>
-            <div class="group">
-                <div class="message-icon">
-                    <a href="/service/userTextView">
-                        <svg width="100px" height="100px" viewBox="0 0 16 16" class="msg-icon bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="text">
-                    TEXT
-                </div>
-            </div>
+            <button type="button" class="btn-style" onclick="location.href='login.html'">출차 요청하기</button>
         </div>
     </div>
     

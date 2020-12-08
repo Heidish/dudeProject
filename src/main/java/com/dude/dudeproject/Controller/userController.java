@@ -20,24 +20,18 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class userController {
 
-//    @Autowired
-//    private userDaoService service;
-//
-//    private BCryptPasswordEncoder pwdEncoder;
+    @Autowired
+    private userDaoService service;
 
-    userDaoService service;
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public userController(userDaoService service, PasswordEncoder passwordEncoder) {
-
         this.service = service;
         this.passwordEncoder = passwordEncoder;
     }
 
-
     private static final Logger logger = LogManager.getLogger(userController.class);
-
 
     @GetMapping(value = "/login")
     public String loginPage(@ModelAttribute user user, Model model) {
@@ -97,12 +91,15 @@ public class userController {
         String user_id = (String) session.getAttribute("id");
 
         String setTime = service.getTime(user_id);
-        String hour = setTime.substring(0, 2);
-        String min = setTime.substring(3, 5);
 
-        String time = hour + ":" + min;
+        if (setTime != null) {
+            String hour = setTime.substring(0, 2);
+            String min = setTime.substring(3, 5);
 
-        model.addAttribute("setTime", time);
+            String time = hour + ":" + min;
+
+            model.addAttribute("setTime", time);
+        }
 
         return "/afterLogin/mainPage";
 
@@ -222,7 +219,21 @@ public class userController {
     }
 
     @GetMapping(value = "/main")
-    public String goMain(){
+    public String goMain(@ModelAttribute user user, HttpServletRequest request, Model model) {
+
+        HttpSession session = request.getSession(false);
+        String user_id = (String) session.getAttribute("id");
+
+        String setTime = service.getTime(user_id);
+
+        if (setTime != null) {
+            String hour = setTime.substring(0, 2);
+            String min = setTime.substring(3, 5);
+
+            String time = hour + ":" + min;
+
+            model.addAttribute("setTime", time);
+        }
 
         return "/afterLogin/mainPage";
     }

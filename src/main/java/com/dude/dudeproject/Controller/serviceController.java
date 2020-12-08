@@ -13,12 +13,12 @@ public class serviceController {
     private responseDaoService service;
 
     @GetMapping(value = "/response")
-    public String ResponsePage(){
+    public String ResponsePage() {
         return "user/userResponse";
     }
 
     @PostMapping(value = "/response")
-    public String saveResponse(@ModelAttribute response response){
+    public String saveResponse(@ModelAttribute response response) {
         System.out.println("사용자가 응답한 num : " + response.getUser_response());
         System.out.println("사용자 ID : " + response.getUser_id());
 
@@ -28,7 +28,14 @@ public class serviceController {
     }
 
     @GetMapping(value = "/responseTrue")
-    public String ResponseTruePage(){
+    public String ResponseTruePage() {
+
         return "/user/userResponseTrue";
+    }
+
+    @GetMapping(value = "/userTextView")
+    public String userTextView() {
+
+        return "/user/userTextView";
     }
 }

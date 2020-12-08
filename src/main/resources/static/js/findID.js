@@ -92,7 +92,11 @@ function texting(){
         "success" : function (data){
             console.log(data)
             certNum = data
-            alert("인증번호가 전송되었습니다.")
+            setTimeout(function () {
+                certNum=undefined
+            },180000)
+            alert("인증번호가 전송되었습니다. \n3분 안에 인증을 완료해주세요.")
+
         }
     })
 }
@@ -104,6 +108,7 @@ $(function (){ // 인증번호 확인 버튼 누르기
         const validation_num = document.querySelector('input[name="validation_num"]').value
         console.log("validation_num"+validation_num)
         console.log("certNum"+certNum)
+
         if(validation_num != certNum){
             $('#verification-check').text('인증번호가 일치하지 않습니다.')
             $('#verification-check').css('color','red')

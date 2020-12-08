@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("/user")
@@ -79,14 +81,16 @@ public class userController {
     }
 
     @PostMapping(value = "/login")
-    public String login(@ModelAttribute user user, HttpServletRequest request, Model model) throws Exception {
+    public String login(@ModelAttribute user user, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
         String password = service.loginPwdChk(user);
 
         boolean pwdMatch = passwordEncoder.matches(user.getUser_pw(), password);
 
         if (!service.login(user) && pwdMatch == false) {
-            model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
-            model.addAttribute("url", "/signup/login");
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+            out.flush();
         }
 
         HttpSession session = request.getSession(true);

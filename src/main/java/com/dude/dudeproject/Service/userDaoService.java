@@ -129,9 +129,15 @@ public class userDaoService {
         return user;
     }
 
-    public String getTime(String id) {
+    /**
+     * 회원이 설정한 출차시간 select
+     */
+    public String getTime(String user_id) {
 
-        return repository.
+        System.out.println("id값 : " + user_id);
+        System.out.println("service에서 출력하는 사용자time : " + repository.findSetTime(user_id));
+
+        return repository.findSetTime(user_id);
     }
 }
 

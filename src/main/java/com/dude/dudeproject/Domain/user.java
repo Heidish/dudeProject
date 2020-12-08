@@ -15,8 +15,6 @@ public class user {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @OneToOne
-//    @JoinTable(name="service_tbl", joinColumns = @JoinColumn(name="user_no"))
     private Long user_no;
     private String user_id;
     private String user_pw;

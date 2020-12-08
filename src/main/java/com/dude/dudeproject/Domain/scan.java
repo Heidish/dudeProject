@@ -13,7 +13,7 @@ import java.sql.Time;
 public class scan {
 
     @Id
-    private Long id;
+    private String user_id;
     private Long case_number;
     private Long user_no_actor;
     private Long user_no_receiver;

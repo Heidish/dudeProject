@@ -29,7 +29,7 @@ public class scanController {
     /**
      * QR타고 들어온 actor, receiver 구분 및 paging
      * **/
-
+    // qr/qrcode/난수
     @GetMapping("/{URL_ONE}/{URL_TWO}/{TARGET_QR_NO}")
     public String userCheck(/*@RequestParam("user_id"),*/
             @PathVariable String URL_ONE,
@@ -39,7 +39,10 @@ public class scanController {
         this.TARGET_QR_NO=TARGET_QR_NO;
         this.URL_ONE = URL_ONE;
         this.URL_TWO = URL_TWO;
-        int value = userService.idCheck("user_id");
+
+        String user_id = "abc123"; //확인용
+
+        int value = userService.idCheck(user_id);
         System.out.println(value);
         String id=scanService.findIdByQrNo(this.TARGET_QR_NO);
         System.out.println(id);

@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface userRepository extends JpaRepository<user, Long> {
+public interface userRepository extends JpaRepository<user, String> {
 
     // 아이디를 이용해 암호화비밀번호를 찾는 쿼리문
     // findPw
@@ -36,6 +36,10 @@ public interface userRepository extends JpaRepository<user, Long> {
     user findByUser(@Param("user_id") String user_id);
 
     // id 값으로 no 값 얻기
-    @Query(value ="select user_no from user where user_id = ?1")
+    @Query(value = "select user_no from user where user_id = ?1")
     String findByIdGetNo(@Param("user_id") String user_id);
+
+    // id 값으로 user가 정한 time 얻기
+    @Query(value = "select t.time_set_home from set_timer t where t.user_id = ?1")
+    String findSetTime(@Param("user_id") String user_id);
 }

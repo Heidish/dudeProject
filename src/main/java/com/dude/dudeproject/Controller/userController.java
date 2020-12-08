@@ -103,7 +103,7 @@ public class userController {
         session.setAttribute("id", user.getUser_id());
 
         //id 값으로  +전체 timer 받아오고 model에 저장
-        String setTime = service.
+//        Stng setTime = service.ri
 
         return "afterLogin/mainPage";  // success
     }

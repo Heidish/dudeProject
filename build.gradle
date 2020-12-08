@@ -32,9 +32,6 @@ dependencies {
 	compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.0'
 	compile group: 'net.nurigo', name: 'javaSDK', version: '2.2'
 
-//	compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
-
-
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 

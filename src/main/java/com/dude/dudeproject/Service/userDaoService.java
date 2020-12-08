@@ -128,5 +128,10 @@ public class userDaoService {
 
         return user;
     }
+
+    public String getTime(String id) {
+
+        return repository.
+    }
 }
 

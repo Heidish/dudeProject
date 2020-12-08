@@ -1,61 +1,96 @@
 package com.dude.dudeproject.Controller;
 
+import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.System.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import reactor.core.publisher.Mono;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.concurrent.TimeUnit;
+import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
+
 
 @Controller
-//@EnableCaching
-//@EnableScheduling
-@CrossOrigin(methods = {RequestMethod.GET, RequestMethod.DELETE})
+@RequestMapping("/qr")
 public class serviceController {
 
-    public static final String QRCODE_ENDPOINT = "/qrcode";
-    public static final long THIRTY_MINUTES = 1800000;
-
-
     @Autowired
-    ImageService imageService;
+    private serviceDaoService serviceDaoService;
 
 
-    @GetMapping(value = QRCODE_ENDPOINT, produces = MediaType.IMAGE_PNG_VALUE)
-    public Mono<ResponseEntity<byte[]>> getQRCode(/*@RequestParam(value = "site", required = true*/  String site ) {
+    //target_qr_no 할당
+    @GetMapping(value = "/target_no", produces = MediaType.IMAGE_PNG_VALUE)
 
-            site="http://localhost:8090/";
+    public String getTarget_qr_no(String target_qr_no) {
+        // qr 코드에 있는 난수 가져와서~
+        // TARGET_QR_NO 에 저장시켜주자.
+        ImageService imageService = new ImageService();
 
 
-        return imageService.generateQRCode(site, 350, 350).map
-                (imageBuff ->
-                        ResponseEntity.ok()
-                                .cacheControl(CacheControl.maxAge(30, TimeUnit.MINUTES))
-                                .body(imageBuff)
-                );
+        //2. 난수를 service_tbl 의 target_qr_no 에 저장
 
+        target_qr_no = imageService.generateRandom();
+
+
+        serviceDaoService.saveQR(target_qr_no);
+
+        System.out.println("서비스 컨트롤러에서 난수 : " + target_qr_no);
+
+
+        return "signup/login";
 
     }
 
 
-//    @Scheduled(fixedRate = THIRTY_MINUTES)
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @DeleteMapping(value = QRCODE_ENDPOINT)
-//    public void deleteAllCachedImages() {
-//        imageService.purgeCache();
-//    }
-//
-//    @Bean
-//    public RouterFunction<ServerResponse> indexRouter(@Value("") final Resource indexHtml) {
-//        return route(GET("/"), request -> ok().contentType(MediaType.TEXT_HTML).bodyValue(indexHtml));
-//    }
+
+
+    //회원확인
+    @GetMapping(value = "/qrCheck/{user_id}")
+    public String idCheck(@PathVariable("user_id") String user_id) throws Exception {
+
+        // 1. service_tbl의 user_no 로 target_qr_no 조회
+        // 2. if-> user_no가 존재하지 않으면, user_info_tbl에 삽입되지 않은 값
+        // 3. else -> user_info_tbl에 존재하므로, myaccount에  target_qr_no 띄워주기
+
+
+        String check = serviceDaoService.idCheck(user_id);
+
+        System.out.println("보내진 값 머야?: " + check);
+        if (check == null) {
+            System.out.println("아이디 뭐야? : " + user_id);
+            throw new Exception();
+
+        } else {
+            return "afterLogin/myAccount";
+        }
+
+    }
+
+    //QR 이미지 삽입
+    @GetMapping(value = "/qrcode/{qr_image}/{user_id}")
+    public void qrcode(@PathVariable("qr_image") String qr_image, @PathVariable("user_id") String user_id, HttpServletResponse response) throws  Exception {
+
+        serviceDaoService.saveImage(qr_image,user_id);
+        response.setContentType("image/png");
+        OutputStream outputStream = response.getOutputStream();
+        byte[] bit=ImageService.getQRCodeImage(qr_image, 350, 350);
+
+        System.out.println("byte 값 : " + bit);
+
+        System.out.println(bit);
+        outputStream.write(ImageService.getQRCodeImage(qr_image,350, 350));
+        outputStream.flush();
+        outputStream.close();
+    }
+
+
+
+
 
 
     @ExceptionHandler(RuntimeException.class)

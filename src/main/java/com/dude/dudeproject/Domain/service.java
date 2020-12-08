@@ -2,18 +2,25 @@ package com.dude.dudeproject.Domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "service_tbl")
 public class service {
 
     @Id
-    private Long id;
-    private Long user_no;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String user_id;
+
     private String target_qr_no;
-    private Date qr_registration_date;
+    private String qr_image;
+
+
+
+
+
+
+
 
 }

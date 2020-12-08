@@ -36,6 +36,8 @@ public class userController {
         return "signup/login";
     }
 
+
+
     @GetMapping(value = "/preRegistration")
     public String preRegPage() {
 
@@ -77,6 +79,9 @@ public class userController {
         return "afterLogin/mainPage";  // success
     }
 
+
+
+
     @GetMapping(value = "/findID")
     public String findID() {
 
@@ -94,6 +99,10 @@ public class userController {
 
         return "/afterLogin/mainPage";
     }
+
+
+
+
 
     @GetMapping(value = "/idCheck")
     public @ResponseBody int idCheck(@RequestParam("user_id") String user_id){

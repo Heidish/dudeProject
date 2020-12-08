@@ -1,38 +1,27 @@
 package com.dude.dudeproject.System;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 public class RandomClass {
 
-    public ArrayList<StringBuffer> numrandom() {
 
-        ArrayList<StringBuffer> random = new ArrayList<>();
-        Random r = new Random();
+    public static String numrandom(int size) {
+        if (size > 0) {
+            char[] tmp = new char[size];
+            for (int i = 0; i < tmp.length; i++) {
+                int div = (int) Math.floor(Math.random() * 2);
 
-        StringBuffer buf = new StringBuffer();
-
-        for (int j = 0; j < 5; j++) {
-
-            for (int i = 0; i < 5; i++) {
-                // rnd.nextBoolean() 는 랜덤으로 true, false 를 리턴. true일 시 랜덤 한 소문자를, false 일 시 랜덤 한
-                // 숫자를 StringBuffer 에 append 한다.
-                if (r.nextBoolean()) {
-                    buf.append((char) ((int) (r.nextInt(26)) + 97));
-                } else {
-                    buf.append((r.nextInt(10)));
+                if (div == 0) { //0이면 숫자로
+                    tmp[i] = (char) (Math.random() * 10 + '0');
+                } else { //1이면 알파벳
+                    tmp[i] = (char) (Math.random() * 26 + 'A');
                 }
 
             }
-            random.add(buf);
+            return new String(tmp);
 
         }
-
-        return random;
-
+        return "Error : size is required.";
     }
-
-
 }
+
 
 

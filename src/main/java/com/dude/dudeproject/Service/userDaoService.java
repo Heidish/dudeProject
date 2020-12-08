@@ -4,6 +4,7 @@ import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Repository.userRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class userDaoService {
     }
 
     /**
-     *  idCheck
+     * idCheck
      */
     public int idCheck(String user_id) {
         if (repository.findByUserIds(user_id) == null) {
@@ -49,5 +50,7 @@ public class userDaoService {
         }
         return 1; // id is reduplicated
     }
+
+
 }
 

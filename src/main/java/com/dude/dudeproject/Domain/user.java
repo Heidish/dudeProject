@@ -1,6 +1,7 @@
 package com.dude.dudeproject.Domain;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 @Data
@@ -8,11 +9,20 @@ import javax.persistence.*;
 @Entity
 public class user {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long user_no;
 
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="user_id")
     private String user_id;
+
+
+
+
+
     private String user_pw;
     private String user_name;
     private int user_mobile;
@@ -29,4 +39,9 @@ public class user {
 
         return user_adress;
     }
+
+
+
+
+
 }

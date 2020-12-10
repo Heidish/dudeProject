@@ -35,7 +35,7 @@ public class ImageService {
     //QR 이미지 만들기
     public static byte[] getQRCodeImage(String text, int width, int height) {
         BufferedImage image = null;
-        text= "http://localhost:8090/" + random;
+        text = "http://localhost:8090/" + random;
 
 
         try {
@@ -49,10 +49,8 @@ public class ImageService {
             return null;
         }
 
-
-
-
     }
+
 
 
 }

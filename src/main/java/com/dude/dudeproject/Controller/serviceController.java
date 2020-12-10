@@ -2,16 +2,26 @@ package com.dude.dudeproject.Controller;
 
 
 import com.dude.dudeproject.Domain.response;
+import com.dude.dudeproject.Domain.service;
 import com.dude.dudeproject.Service.responseDaoService;
 import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.System.ImageService;
+import com.dude.dudeproject.System.QRGenerator;
+import com.dude.dudeproject.System.RandomClass;
+import com.sun.imageio.plugins.png.PNGImageReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sun.awt.image.PNGImageDecoder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.OutputStream;
+import java.util.Base64;
+import java.util.Objects;
 
 
 @Controller
@@ -25,80 +35,70 @@ public class serviceController {
     private serviceDaoService serviceDaoService;
 
 
-    //target_qr_no 할당
-    @GetMapping(value = "/target_no", produces = MediaType.IMAGE_PNG_VALUE)
-
-    public String getTarget_qr_no(String target_qr_no) {
-        // qr 코드에 있는 난수 가져와서~
-        // TARGET_QR_NO 에 저장시켜주자.
-        ImageService imageService = new ImageService();
+    //회원 가입 후, 내 정보 누르면 사용자마다 QR 이미지 넣어주기
+    @GetMapping(value = "/setQRcode/{qr_image}", produces = MediaType.IMAGE_PNG_VALUE)
+    public @ResponseBody
+    void insertQR(@PathVariable(value = "qr_image") String qr_image,  HttpServletRequest request, HttpServletResponse response,
+                  @ModelAttribute service service, Model model) throws Exception {
 
 
-        //2. 난수를 service_tbl 의 target_qr_no 에 저장
+        HttpSession session = request.getSession(false);
 
-        target_qr_no = imageService.generateRandom();
+        String user_id = (String) request.getAttribute("id");
+
+        String target_no = service.getTarget_qr_no();
+
+        target_no = RandomClass.numrandom(10);
 
 
-        serviceDaoService.saveQR(target_qr_no);
-
-        System.out.println("서비스 컨트롤러에서 난수 : " + target_qr_no);
-
-
-        return "signup/login";
-
-    }
+        qr_image = "http://localhost:8090/" + RandomClass.numrandom(10);
 
 
 
 
-    //회원확인
-    @GetMapping(value = "/qrCheck/{user_id}")
-    public String idCheck(@PathVariable("user_id") String user_id) throws Exception {
-
-        // 1. service_tbl의 user_no 로 target_qr_no 조회
-        // 2. if-> user_no가 존재하지 않으면, user_info_tbl에 삽입되지 않은 값
-        // 3. else -> user_info_tbl에 존재하므로, myaccount에  target_qr_no 띄워주기
 
 
-        String check = serviceDaoService.idCheck(user_id);
 
-        System.out.println("보내진 값 머야?: " + check);
-        if (check == null) {
-            System.out.println("아이디 뭐야? : " + user_id);
-            throw new Exception();
 
-        } else {
-            return "afterLogin/myAccount";
-        }
 
-    }
-
-    //QR 이미지 삽입
-    @GetMapping(value = "/qrcode/{qr_image}/{user_id}")
-    public void qrcode(@PathVariable("qr_image") String qr_image, @PathVariable("user_id") String user_id, HttpServletResponse response) throws  Exception {
-
-        serviceDaoService.saveImage(qr_image,user_id);
         response.setContentType("image/png");
         OutputStream outputStream = response.getOutputStream();
-        byte[] bit=ImageService.getQRCodeImage(qr_image, 350, 350);
 
-        System.out.println("byte 값 : " + bit);
 
-        System.out.println(bit);
-        outputStream.write(ImageService.getQRCodeImage(qr_image,350, 350));
         outputStream.flush();
+
+        service.setUser_id(user_id);
+        service.setTarget_qr_no(target_no);
+        service.setQr_image(qr_image);
+        outputStream.write((ImageService.getQRCodeImage(qr_image, 300, 300)));
+        serviceDaoService.create(service);
+
         outputStream.close();
+
+
+
+
+
+        model.addAttribute("qr_image", qr_image);
+//        model.addAttribute(" qr_id",user_id);
+
+        System.out.println("qr 삽입 할 id : " + service.getUser_id());
+        System.out.println("qr 삽입 할 target_no 값 : " + service.getTarget_qr_no());
+        System.out.println("qr 삽입 할 이미지 값 : " + service.getQr_image());
+
+
     }
 
 
-
+    //첫 출차요청으로 사용자가 들어왔을 때
     @GetMapping(value = "/response")
-    public String ResponsePage(){
+    public String ResponsePage() {
         return "user/userResponse";
     }
 
+    //사용자가 응답 후 디비에 저장
     @PostMapping(value = "/response")
-    public String saveResponse(@ModelAttribute response response){
+    public String saveResponse(HttpServletRequest request, @ModelAttribute response response) {
         System.out.println("사용자가 응답한 num : " + response.getUser_response());
         System.out.println("사용자 ID : " + response.getUser_id());
 
@@ -107,8 +107,9 @@ public class serviceController {
         return "/user/userResponseTrue";     //어디로든 보내놓고 어차피 아래꺼로 내려옴
     }
 
+    //사용자 전환 페이지
     @GetMapping(value = "/responseTrue")
-    public String ResponseTruePage(){
+    public String ResponseTruePage() {
         return "/user/userResponseTrue";
     }
 

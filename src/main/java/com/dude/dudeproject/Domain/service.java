@@ -3,6 +3,7 @@ package com.dude.dudeproject.Domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.sql.Blob;
 
 @Data
 @Table(name="service_tbl")

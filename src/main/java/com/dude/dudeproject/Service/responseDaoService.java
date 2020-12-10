@@ -1,6 +1,7 @@
 package com.dude.dudeproject.Service;
 
 import com.dude.dudeproject.Domain.response;
+import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Repository.responseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,20 @@ public class responseDaoService {
 
         return repository.save(response);
     }
-}
 
+    /**
+     * 사용자 응답 반응 가져오기
+     * */
+    public String getStatus(String user_id){
+        String status = repository.getStatus(user_id);
+        return status;
+    }
+
+    /**
+     * 사용자 전화번호 불러오기
+     * */
+    public String getPhonenum(String user_id){
+        String phone_num = repository.getPhonenum(user_id);
+        return  phone_num;
+    }
+}

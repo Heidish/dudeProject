@@ -17,9 +17,9 @@ import java.io.OutputStream;
 @Controller
 @RequestMapping("/service")
 public class serviceController {
+
     @Autowired
     private responseDaoService service;
-
 
     @Autowired
     private serviceDaoService serviceDaoService;
@@ -32,7 +32,6 @@ public class serviceController {
         // qr 코드에 있는 난수 가져와서~
         // TARGET_QR_NO 에 저장시켜주자.
         ImageService imageService = new ImageService();
-
 
         //2. 난수를 service_tbl 의 target_qr_no 에 저장
 
@@ -111,5 +110,6 @@ public class serviceController {
     public String ResponseTruePage(){
         return "/user/userResponseTrue";
     }
+
 
 }

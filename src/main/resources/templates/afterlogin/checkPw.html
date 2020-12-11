@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,35 +60,28 @@
     <!-- contents 영역 -->
     <div class="contents">
         <div class="title flex">
-            비밀번호 재설정
+            비밀번호 변경을 위한 본인 확인
         </div>
         <div class="mobile">
-            <div class="flex">
-                <div class="mobile-ttl">
-                    새 비밀번호
-                </div>
-                <div class="mobile-input">
-                    <input type="text" class="input1" name="user_mobile" placeholder="새로운 비밀번호를 입력해주세요."/>
-                    <div class="ajax">
-                        (ajax) 잘못된 형식의 비밀번호입니다.
-                    </div>
-                </div>
+            <div class="flex" style="margin-top: 80px; text-align: center;">
+                비밀번호 수정을 위해 본인 확인이 필요합니다.<br/>
+                현재 비밀번호를 입력해주세요.
             </div>
             <div class="flex">
                 <div class="mobile-ttl">
-                    새 비밀번호 확인
+                    현재 비밀번호
                 </div>
                 <div class="mobile-input">
-                    <input type="text" class="input1" name="user_mobile" placeholder="새로운 비밀번호를 다시 입력해주세요."/>
+                    <input type="text" class="input1" name="user_mobile" placeholder=""/>
                     <div class="ajax">
-                        (ajax) 비밀번호가 일치하지 않습니다.
+                        (ajax) 잘못된 형식의 비밀번호입니다.
                     </div>
                 </div>
             </div>
         </div>
         <!-- 하단 확인 버튼 -->
         <div class="btn flex">
-            <button type="bytton" class="btn-style" onclick="location.href='myAccount.html'">확인</button>
+            <button type="bytton" class="btn-style" onclick="location.href='updateUserPw.html'">확인</button>
         </div>
     </div>
     

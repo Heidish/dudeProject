@@ -2,8 +2,15 @@ package com.dude.dudeproject.Service;
 
 import com.dude.dudeproject.Domain.service;
 import com.dude.dudeproject.Repository.serviceRepository;
+import com.dude.dudeproject.System.ImageService;
+import com.dude.dudeproject.System.QRGenerator;
+import com.dude.dudeproject.System.RandomClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Blob;
+import java.util.Map;
+import java.util.Random;
 
 @Service
 public class serviceDaoService {
@@ -17,17 +24,6 @@ public class serviceDaoService {
         this.repository = repository;
     }
 
-
-    public String saveQR(String target_qr_no){
-
-        return repository.getTarget_qr_no(target_qr_no);
-    }
-
-
-    public void saveImage(String qr_image, String user_id){
-
-        repository.saveImage(qr_image, user_id);
-    }
 
 
     /**

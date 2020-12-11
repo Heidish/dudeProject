@@ -2,6 +2,7 @@ package com.dude.dudeproject.Controller;
 
 
 import com.dude.dudeproject.Domain.response;
+import com.dude.dudeproject.Domain.service;
 import com.dude.dudeproject.Service.responseDaoService;
 import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.System.ImageService;
@@ -11,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sun.awt.image.PNGImageDecoder;
 
 import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletOutputStream;
@@ -74,8 +76,8 @@ public class serviceController {
     @GetMapping(value="/getImage/{qr_image}", produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody void byte2Image(@PathVariable(value = "qr_image") byte[] qr_image, HttpServletResponse response,
                                   HttpServletRequest request, Model model) throws FileNotFoundException, IOException {
-    System.out.println("come?");
-     //   response.setContentType("image/png");
+        System.out.println("come?");
+        //   response.setContentType("image/png");
 //        OutputStream outputStream = response.getOutputStream();
 //
 //        outputStream.flush();
@@ -83,8 +85,8 @@ public class serviceController {
 //        outputStream.write(qr_image);
 //
 //        outputStream.close();
-     //   InputStream is = request.getInputStream();
-   //     return IOUtils.read(is,qr_image);
+        //   InputStream is = request.getInputStream();
+        //     return IOUtils.read(is,qr_image);
 
         InputStream is = null;
         byte[] bytes;
@@ -109,8 +111,11 @@ public class serviceController {
         while ((binaryRead = is.read()) != -1) {
             os.write(binaryRead);
         }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 38150553427f9b0a3f3680477f4c4ed4d068b62c
     }
 
 
@@ -145,18 +150,28 @@ public class serviceController {
 //            os.write(binaryRead);
 //        }
 
+        outputStream.close();
+
+
+        model.addAttribute("qr_image", qr_image);
+//        model.addAttribute(" qr_id",user_id);
+
+        System.out.println("qr 삽입 할 id : " + service.getUser_id());
+        System.out.println("qr 삽입 할 target_no 값 : " + service.getTarget_qr_no());
+        System.out.println("qr 삽입 할 이미지 값 : " + service.getQr_image());
+
+
     }
 
-
-
-
+    //첫 출차요청으로 사용자가 들어왔을 때
     @GetMapping(value = "/response")
-    public String ResponsePage(){
+    public String ResponsePage() {
         return "user/userResponse";
     }
 
+    //사용자가 응답 후 디비에 저장
     @PostMapping(value = "/response")
-    public String saveResponse(@ModelAttribute response response){
+    public String saveResponse(HttpServletRequest request, @ModelAttribute response response) {
         System.out.println("사용자가 응답한 num : " + response.getUser_response());
         System.out.println("사용자 ID : " + response.getUser_id());
 
@@ -165,10 +180,15 @@ public class serviceController {
         return "/user/userResponseTrue";     //어디로든 보내놓고 어차피 아래꺼로 내려옴
     }
 
+    //사용자 전환 페이지
     @GetMapping(value = "/responseTrue")
-    public String ResponseTruePage(){
+    public String ResponseTruePage() {
         return "/user/userResponseTrue";
     }
 
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 38150553427f9b0a3f3680477f4c4ed4d068b62c

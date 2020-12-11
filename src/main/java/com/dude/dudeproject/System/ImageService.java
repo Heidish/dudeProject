@@ -37,7 +37,7 @@ public class ImageService {
      */
     public static byte[] getQRCodeImage(String text, int width, int height) {
         BufferedImage image = null;
-        text= "http://localhost:8090/" + random;
+        text = "http://localhost:8090/" + random;
 
         try {
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
@@ -49,10 +49,8 @@ public class ImageService {
             return null;
         }
 
-
-
-
     }
+
 
 
 }

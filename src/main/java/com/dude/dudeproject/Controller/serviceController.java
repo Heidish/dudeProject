@@ -5,13 +5,19 @@ import com.dude.dudeproject.Domain.response;
 import com.dude.dudeproject.Service.responseDaoService;
 import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.System.ImageService;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.OutputStream;
+import java.awt.*;
+import java.io.*;
 
 
 @Controller
@@ -26,68 +32,121 @@ public class serviceController {
 
 
     //target_qr_no 할당
-    @GetMapping(value = "/target_no", produces = MediaType.IMAGE_PNG_VALUE)
+//    @GetMapping(value = "/target_no", produces = MediaType.IMAGE_PNG_VALUE)
+//
+//    public String getTarget_qr_no(String target_qr_no) {
+//        // qr 코드에 있는 난수 가져와서~
+//        // TARGET_QR_NO 에 저장시켜주자.
+//        ImageService imageService = new ImageService(); // System의 ImageService를 가져와서 사용.
+//
+//        //2. 난수를 service_tbl 의 target_qr_no 에 저장
+//
+//        target_qr_no = imageService.generateRandom();
+//        serviceDaoService.saveQR(target_qr_no);
+//
+//        System.out.println("서비스 컨트롤러에서 난수 : " + target_qr_no);
+//
+//        return "signup/login";
+//
+//    }
 
-    public String getTarget_qr_no(String target_qr_no) {
-        // qr 코드에 있는 난수 가져와서~
-        // TARGET_QR_NO 에 저장시켜주자.
-        ImageService imageService = new ImageService();
-
-        //2. 난수를 service_tbl 의 target_qr_no 에 저장
-
-        target_qr_no = imageService.generateRandom();
-
-
-        serviceDaoService.saveQR(target_qr_no);
-
-        System.out.println("서비스 컨트롤러에서 난수 : " + target_qr_no);
-
-
-        return "signup/login";
-
-    }
-
-
-
-
-    //회원확인
-    @GetMapping(value = "/qrCheck/{user_id}")
-    public String idCheck(@PathVariable("user_id") String user_id) throws Exception {
-
-        // 1. service_tbl의 user_no 로 target_qr_no 조회
-        // 2. if-> user_no가 존재하지 않으면, user_info_tbl에 삽입되지 않은 값
-        // 3. else -> user_info_tbl에 존재하므로, myaccount에  target_qr_no 띄워주기
-
-
-        String check = serviceDaoService.idCheck(user_id);
-
-        System.out.println("보내진 값 머야?: " + check);
-        if (check == null) {
-            System.out.println("아이디 뭐야? : " + user_id);
-            throw new Exception();
-
-        } else {
-            return "afterLogin/myAccount";
-        }
-
-    }
 
     //QR 이미지 삽입
-    @GetMapping(value = "/qrcode/{qr_image}/{user_id}")
-    public void qrcode(@PathVariable("qr_image") String qr_image, @PathVariable("user_id") String user_id, HttpServletResponse response) throws  Exception {
+//    @GetMapping(value = "/qrcode/{qr_image}/{user_id}")
+//    public void qrcode(@PathVariable("qr_image") String qr_image, @PathVariable("user_id") String user_id, HttpServletResponse response) throws  Exception {
+//
+//        serviceDaoService.saveImage(qr_image,user_id);
+//        response.setContentType("image/png");
+//        OutputStream outputStream = response.getOutputStream();
+//        byte[] bit=ImageService.getQRCodeImage(qr_image, 350, 350);
+//
+//        System.out.println("byte 값 : " + bit);
+//
+//        System.out.println(bit);
+//        outputStream.write(ImageService.getQRCodeImage(qr_image,350, 350));
+//        outputStream.flush();
+//        outputStream.close();
+//    }
 
-        serviceDaoService.saveImage(qr_image,user_id);
-        response.setContentType("image/png");
-        OutputStream outputStream = response.getOutputStream();
-        byte[] bit=ImageService.getQRCodeImage(qr_image, 350, 350);
+    /**
+     * byte array to image
+     */
+    @GetMapping(value="/getImage/{qr_image}", produces = MediaType.IMAGE_PNG_VALUE)
+    public @ResponseBody void byte2Image(@PathVariable(value = "qr_image") byte[] qr_image, HttpServletResponse response,
+                                  HttpServletRequest request, Model model) throws FileNotFoundException, IOException {
+    System.out.println("come?");
+     //   response.setContentType("image/png");
+//        OutputStream outputStream = response.getOutputStream();
+//
+//        outputStream.flush();
+//
+//        outputStream.write(qr_image);
+//
+//        outputStream.close();
+     //   InputStream is = request.getInputStream();
+   //     return IOUtils.read(is,qr_image);
 
-        System.out.println("byte 값 : " + bit);
+        InputStream is = null;
+        byte[] bytes;
 
-        System.out.println(bit);
-        outputStream.write(ImageService.getQRCodeImage(qr_image,350, 350));
-        outputStream.flush();
-        outputStream.close();
+        /* 저는 jpg 파일로 고정이라 이렇게 했지만 여러분은 타입을 얻어와야 한다. */
+        String content_type = "image/png";
+        response.setContentType(content_type);  // Content Type Set
+
+        /* DB의 BLOB 타입의 내용을 가져와서 bytes 변수에 담아보자. */
+
+        bytes = qr_image;
+
+        /* String --> InputStream 타입으로 변환 */
+        is = new ByteArrayInputStream(bytes);
+
+
+        /* 이제 OutputStream 으로 출력해보자*/
+        ServletOutputStream os = response.getOutputStream();
+
+        int binaryRead;
+
+        while ((binaryRead = is.read()) != -1) {
+            os.write(binaryRead);
+        }
+
+
     }
+
+
+    @GetMapping(value="/getImage111/{qr_image}")
+    public void byteImage(@PathVariable(value = "qr_image") String qr_image, HttpServletResponse response,
+                          HttpServletRequest request, Model model) throws FileNotFoundException, IOException {
+        System.out.println("come?");
+        System.out.println(qr_image);
+
+        InputStream is = null;
+        byte[] bytes;
+
+        /* 저는 jpg 파일로 고정이라 이렇게 했지만 여러분은 타입을 얻어와야 한다. */
+        String content_type = "image/png";
+        response.setContentType(content_type);  // Content Type Set
+        System.out.println("1?");
+        /* DB의 BLOB 타입의 내용을 가져와서 bytes 변수에 담아보자. */
+
+    //    bytes = qr_image;
+        System.out.println("2?");
+        /* String --> InputStream 타입으로 변환 */
+     //   is = new ByteArrayInputStream(bytes);
+
+        System.out.println("3?");
+        /* 이제 OutputStream 으로 출력해보자*/
+        ServletOutputStream os = response.getOutputStream();
+        System.out.println("4?");
+        int binaryRead;
+
+//        while ((binaryRead = is.read()) != -1) {
+//            System.out.println("5?");
+//            os.write(binaryRead);
+//        }
+
+    }
+
 
 
 

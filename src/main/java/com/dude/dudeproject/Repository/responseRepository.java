@@ -10,8 +10,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface responseRepository extends JpaRepository<response, Long> {
 
-    //ID, 상태값 저장
-    @Query(value= "insert into user_response_tbl (user_id, user_response) values (:user_id, :user_response)", nativeQuery = true)
-    String save (@Param("user_id") String user_id, @Param("user_response") String user_response);
+    //사용자 응답값 얻기
+    @Query(value = "select user_response from response where user_id = ?1")
+    String getStatus(@Param("user_id") String user_id);
 
+    //사용자 번호 얻기
+    @Query(value = "select user_mobile from user where user_id = ?1")
+    String getPhonenum(@Param("user_id") String user_id);
 }

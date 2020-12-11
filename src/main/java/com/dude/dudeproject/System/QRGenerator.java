@@ -11,8 +11,20 @@ import java.io.IOException;
 
 public class QRGenerator {
 
+        public static RandomClass random = new RandomClass();
+
+        public static String r;
+
+
+
         public static byte[] generateQRCodeImage(String text, int width, int height)
                 throws WriterException, IOException {
+
+
+            r = random.numrandom(10);
+
+            text = "http://localhost:8090/" + r;
+
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
             ByteArrayOutputStream out = new ByteArrayOutputStream();

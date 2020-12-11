@@ -1,5 +1,6 @@
 package com.dude.dudeproject.Service;
 
+import com.dude.dudeproject.Domain.service;
 import com.dude.dudeproject.Repository.serviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,6 @@ public class serviceDaoService {
         return repository.getTarget_qr_no(target_qr_no);
     }
 
-    public String  idCheck (String user_id){
-        return repository.idCheck(user_id);
-    }
 
     public void saveImage(String qr_image, String user_id){
 
@@ -32,6 +30,21 @@ public class serviceDaoService {
     }
 
 
+    /**
+     * save service_tbl DB
+     * @param service create qr
+     */
+    public void save(service service){
+        repository.save(service);
+    }
+
+    /**
+     * get service_tbl by user_id
+     */
+    public service findByService(String user_id){
+
+        return  repository.findByService(user_id);
+    }
 
 
 }

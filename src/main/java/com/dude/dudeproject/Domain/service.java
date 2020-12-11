@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class service {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String user_id;
 
     private String target_qr_no;

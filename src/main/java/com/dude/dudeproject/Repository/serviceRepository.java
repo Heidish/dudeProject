@@ -24,4 +24,7 @@ public interface serviceRepository extends JpaRepository<service, Long> {
     @Query(value = "select target_qr_no from service where user_id=?1")
     String idCheck(@Param("user_id") String user_id);
 
+//    @Query(value = "select u from user u where u.user_id = ?1")
+    @Query(value = "select s from service s where s.user_id=?1")
+    service findByService(@Param("user_id") String user_id);
 }

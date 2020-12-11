@@ -14,32 +14,32 @@ import java.io.ByteArrayOutputStream;
 @Service
 public class ImageService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageService.class);
-    private static RandomClass r = new RandomClass();
+    private static RandomClass r = new RandomClass();   //
     static String random;
 
+    /**
+     * 난수 생성 method
+     * @return 난수값
+     */
     public static String generateRandom() {
-
-
         //랜덤값 추출
         random = r.numrandom(10);
-
-
         System.out.println("랜덤값 : " + random);
-
-
         return random;
-
-
     }
 
-    //QR 이미지 만들기
+    /**
+     * QR image 생성 method
+     * @param text
+     * @param width
+     * @param height
+     * @return
+     */
     public static byte[] getQRCodeImage(String text, int width, int height) {
         BufferedImage image = null;
         text= "http://localhost:8090/" + random;
 
-
         try {
-
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

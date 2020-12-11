@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<<<<<<< HEAD:src/main/resources/templates/afterlogin/updateUserMobile.html
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+=======
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
+>>>>>>> 446b141922eb5657befa476dc57284c7302bfcff:src/main/resources/templates/afterLogin/updateUserMobile.html
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +14,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" media="screen" href="/css/commons.css">
 <link rel="stylesheet" type="text/css" media="screen" href="/css/.css">
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/js/updateUserMobile.js"></script>
 <style>
     .title {
         font-weight: bold;
@@ -19,11 +24,10 @@
         padding-top: 15px;
     }
     .mobile-ttl {
-        width: 150px;
+        width: 120px;
         padding-top: 40px;
     }
     .input1 {
-        width: 290px;
         height: 30px;
         margin-top: 35px;
     }
@@ -52,37 +56,43 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <a href="/signUp/login.html">
-            <img class="logo" src="/images/logo.png"/>
+        <a th:href="@{/user/main}">
+            <img class="logo" th:src="@{/images/logo.png}"/>
         </a>
     </div>
 
     <!-- contents 영역 -->
     <div class="contents">
         <div class="title flex">
-            비밀번호 변경을 위한 본인 확인
+            전화번호 수정
         </div>
         <div class="mobile">
-            <div class="flex" style="margin-top: 80px; text-align: center;">
-                비밀번호 수정을 위해 본인 확인이 필요합니다.<br/>
-                현재 비밀번호를 입력해주세요.
-            </div>
             <div class="flex">
                 <div class="mobile-ttl">
-                    현재 비밀번호
+                    휴대폰 번호
                 </div>
                 <div class="mobile-input">
-                    <input type="text" class="input1" name="user_mobile" placeholder=""/>
-                    <div class="ajax">
-                        (ajax) 잘못된 형식의 비밀번호입니다.
+                    <input type="text" class="input1" name="user_mobile"/>
+                    <div class="ajax" id="phone-valid">
                     </div>
                 </div>
+            </div>
+            <div class="btn flex">
+                <button type="button" class="btn-style" id="validation_button">인증번호 전송</button>
+            </div>
+            <div class="mobile-input flex">
+                <input type="text" class="input2" name="validation_num" placeholder="인증번호를 입력해주세요."/>
             </div>
         </div>
         <!-- 하단 확인 버튼 -->
         <div class="btn flex">
-            <button type="bytton" class="btn-style" onclick="location.href='updateUserPw.html'">확인</button>
+            <button type="button" class="btn-style" id="verification-confirm">확인</button>
         </div>
+
+        <div class="btn flex">
+            <button type="button" class="btn-style" id="update">전화번호 수정</button>
+        </div>
+
     </div>
     
     <!-- footer 영역 -->
@@ -93,7 +103,6 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   

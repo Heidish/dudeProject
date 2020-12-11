@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,8 +23,36 @@
 
     <!-- contents 영역 -->
     <div class="contents">
-
+         <div align="center">
+             응답 완료.
+         </div>
     </div>
+
+    <script>
+        $(function (){
+            $('#possible_btn').on('click',function (){
+                const num=1
+                const id="tjddms2565"
+
+                const form = {
+                    num : num,
+                    id : id
+                }
+                $.ajax({
+                    "url": '/service/response' ,
+                    "type": 'post',
+                    "data" : form,
+                    "success" : function (data){
+                        alert('처리되었습니다.')
+                        location.href='/service/responseTrue'
+                    },
+                    "fail":function (data) {
+                        alert("다시 시도해주세요.")
+                    }
+                })
+            })
+        })
+    </script>
     
     <!-- footer 영역 -->
     <div id="footer">

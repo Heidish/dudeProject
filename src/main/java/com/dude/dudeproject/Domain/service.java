@@ -3,6 +3,7 @@ package com.dude.dudeproject.Domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.sql.Blob;
 
 @Data
 @Table(name="service_tbl")
@@ -10,7 +11,6 @@ import javax.persistence.*;
 public class service {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String user_id;
 
     private String target_qr_no;

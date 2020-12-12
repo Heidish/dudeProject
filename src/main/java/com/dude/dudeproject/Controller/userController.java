@@ -1,12 +1,17 @@
 package com.dude.dudeproject.Controller;
 
+import com.dude.dudeproject.Domain.service;
 import com.dude.dudeproject.Domain.user;
+import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.Service.userDaoService;
+import com.dude.dudeproject.System.ImageService;
+import com.dude.dudeproject.System.RandomClass;
 import com.dude.dudeproject.System.SmsClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +29,9 @@ public class userController {
 
     @Autowired
     private userDaoService service;
+
+    @Autowired
+    private serviceDaoService serviceDao;
 
     private PasswordEncoder passwordEncoder;
 
@@ -60,16 +68,29 @@ public class userController {
         return "signup/registration";
     }
 
-    @PostMapping(value = "/add")
-    public String createUser(@ModelAttribute user user) {
-        System.out.println("암호화 전 비밀번호 = " + user.getUser_pw());
-
+    @PostMapping(value = "/add", produces = MediaType.IMAGE_PNG_VALUE)
+    public String createUser(@ModelAttribute user user, @ModelAttribute service serviceVO) {
+      //  System.out.println("암호화 전 비밀번호 = " + user.getUser_pw());
         String password = passwordEncoder.encode(user.getUser_pw()); // 비밀번호를 암호화
         user.setUser_pw(password);
-
-        System.out.println("암호화 후 비밀번호 = " + password);
-
+     //   System.out.println("암호화 후 비밀번호 = " + password);
         service.save(user);
+
+        String random = RandomClass.numrandom(10);
+        System.out.println("1");
+        byte[] qr_image = ImageService.getQRCodeImage(random,300,300);
+        System.out.println("qr 바이트 값"+qr_image);
+        System.out.println("2");
+        serviceVO.setQr_image(qr_image.toString());
+
+        serviceVO.setUser_id(user.getUser_id());
+        serviceVO.setTarget_qr_no(random);
+
+        System.out.println("3");
+
+        serviceDao.save(serviceVO);
+
+        System.out.println("4");
 
         return "signup/login";
     }
@@ -223,14 +244,23 @@ public class userController {
         return "/signup/login";
     }
 
-    @GetMapping(value = "/account")
-    public String myAccount(HttpServletRequest request, @ModelAttribute user user, Model model){
+    @GetMapping(value = "/account", produces = MediaType.IMAGE_PNG_VALUE)
+    public String myAccount(HttpServletRequest request, @ModelAttribute user user, Model model, @ModelAttribute service serviceVO, HttpServletResponse response){
         // qr 추후에 추가
         HttpSession session = request.getSession(false);
         user.setUser_id((String)session.getAttribute("id"));
         user = service.readAccount(user);
 
         model.addAttribute("user",user);
+
+        serviceVO = serviceDao.findByService(user.getUser_id());
+        String qr= serviceVO.getQr_image();
+        byte[] qr_image = serviceVO.getQr_image().getBytes();
+    System.out.println(serviceVO.toString());
+    System.out.println(qr_image);
+//        String src = "/service/getImage/"+qr_image;
+
+        model.addAttribute("qr_image", qr);
 
         return "/afterLogin/myAccount";
     }

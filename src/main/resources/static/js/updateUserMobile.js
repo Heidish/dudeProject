@@ -37,7 +37,10 @@ $(function (){ // 인증번호 버튼 누르기
             "success" : function (data){
                 console.log(data)
                 certNum = data
-                alert("인증번호가 전송되었습니다.")
+                setTimeout(function () {
+                   certNum=undefined
+                },180000)
+                alert("인증번호가 전송되었습니다. \n3분 안에 인증을 완료해주세요.")
             }
         })
     })

@@ -1,8 +1,15 @@
 package com.dude.dudeproject.System;
 
+/**
+ * random generate class
+ */
 public class RandomClass {
 
-
+    /**
+     * random generate method
+     * @param size
+     * @return
+     */
     public static String numrandom(int size) {
         if (size > 0) {
             char[] tmp = new char[size];
@@ -14,10 +21,8 @@ public class RandomClass {
                 } else { //1이면 알파벳
                     tmp[i] = (char) (Math.random() * 26 + 'A');
                 }
-
             }
             return new String(tmp);
-
         }
         return "Error : size is required.";
     }

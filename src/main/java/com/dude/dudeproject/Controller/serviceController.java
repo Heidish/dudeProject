@@ -17,32 +17,26 @@ import java.io.OutputStream;
 @Controller
 @RequestMapping("/service")
 public class serviceController {
+
     @Autowired
     private responseDaoService service;
-
 
     @Autowired
     private serviceDaoService serviceDaoService;
 
-
     //target_qr_no 할당
     @GetMapping(value = "/target_no", produces = MediaType.IMAGE_PNG_VALUE)
-
     public String getTarget_qr_no(String target_qr_no) {
         // qr 코드에 있는 난수 가져와서~
         // TARGET_QR_NO 에 저장시켜주자.
         ImageService imageService = new ImageService();
 
-
         //2. 난수를 service_tbl 의 target_qr_no 에 저장
-
         target_qr_no = imageService.generateRandom();
-
 
         serviceDaoService.saveQR(target_qr_no);
 
         System.out.println("서비스 컨트롤러에서 난수 : " + target_qr_no);
-
 
         return "signup/login";
 
@@ -59,7 +53,6 @@ public class serviceController {
         // 2. if-> user_no가 존재하지 않으면, user_info_tbl에 삽입되지 않은 값
         // 3. else -> user_info_tbl에 존재하므로, myaccount에  target_qr_no 띄워주기
 
-
         String check = serviceDaoService.idCheck(user_id);
 
         System.out.println("보내진 값 머야?: " + check);
@@ -75,7 +68,9 @@ public class serviceController {
 
     //QR 이미지 삽입
     @GetMapping(value = "/qrcode/{qr_image}/{user_id}")
-    public void qrcode(@PathVariable("qr_image") String qr_image, @PathVariable("user_id") String user_id, HttpServletResponse response) throws  Exception {
+    public void qrcode(@PathVariable("qr_image") String qr_image,
+                       @PathVariable("user_id") String user_id,
+                       HttpServletResponse response) throws Exception {
 
         serviceDaoService.saveImage(qr_image,user_id);
         response.setContentType("image/png");

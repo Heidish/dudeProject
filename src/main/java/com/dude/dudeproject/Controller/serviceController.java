@@ -161,6 +161,7 @@ public class serviceController {
     //사용자가 응답 후 디비에 저장
     @PostMapping(value = "/response")
     public String saveResponse(HttpServletRequest request, @ModelAttribute response response) {
+
         System.out.println("사용자가 응답한 num : " + response.getUser_response());
         System.out.println("사용자 ID : " + response.getUser_id());
 
@@ -172,8 +173,8 @@ public class serviceController {
     //사용자 전환 페이지
     @GetMapping(value = "/responseTrue")
     public String ResponseTruePage() {
+
         return "/user/userResponseTrue";
     }
-
 
 }

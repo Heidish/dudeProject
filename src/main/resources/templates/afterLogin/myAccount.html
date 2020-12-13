@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD:src/main/resources/templates/afterlogin/myAccount.html
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-=======
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" >
->>>>>>> 446b141922eb5657befa476dc57284c7302bfcff:src/main/resources/templates/afterLogin/myAccount.html
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,7 +82,9 @@
                     </label>
                     <span th:text="${qr_image}"></span>
                     <div class="qr-img">
-                        <img class="qr-img1" src="/service/getImage111/${qr_image}"/>
+                        <img th:src="@{/service/qr(qr_image=${qr_image})}" />
+<!--                        <img th:src="@{/service/getImage(qr_image=${qr_image})}" />-->
+<!--                        <img class="qr-img1" th:src=@"{/service/getImage/${qr_image}}"  />-->
 <!--                        <img class="qr-img1" th:src="@{/service/setQRcode/} + ${qr_image}" />-->
 
                     </div>

@@ -60,18 +60,9 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <img class="logo" th:src="@{/images/logo.png}"/>
-=======
-        <a href="/signUp/login.html">
-            <img class="logo" src="/images/logo.png"/>
-=======
         <a th:href="@{/user/login}">
             <img class="logo" th:src="@{/images/logo.png}"/>
->>>>>>> 446b141922eb5657befa476dc57284c7302bfcff
         </a>
->>>>>>> refs/remotes/origin/main
     </div>
 
     <!-- contents 영역 -->
@@ -104,28 +95,14 @@
                     <input type="password" class="input1" name="user_pw" placeholder="PASSWORD" id="user_pw"/>
                 </div>
             </div>
-            <div class="sign1 flex">
-                <!-- 아래 이미지 대신 네이버 로그인 api 삽입 예정 -->
-                <img class="sns-login-img" src="/images/sns-login.png"/>
-            </div>
-<<<<<<< HEAD
-            <div class="input">
-                <input type="text" class="input1" name="user_id" placeholder="PASSWORD"/>
-            </div>
-        </div>
         <div class="sign1 flex">
-<<<<<<< HEAD
-            <!-- 아래 이미지 대신 카카오 로그인 api 삽입 예정 -->
-            <img class="kakao-img" th:src="@{/images/kakao_login.png"}/>
-=======
             <!-- 아래 이미지 대신 네이버 로그인 api 삽입 예정 -->
             <img class="sns-login-img" src="/images/sns-login.png"/>
->>>>>>> refs/remotes/origin/main
+
         </div>
         <div class="flex">
             <div class="btn">
                 <button type="button" class="btn-style" onclick="location.href='preRegistration.html'">회원가입</button>
-=======
             <div class="flex">
                 <div class="btn">
                     <button type="button" class="btn-style" onclick="location.href='/user/preRegistration'">회원가입</button>
@@ -133,7 +110,6 @@
                 <div class="btn">
                     <input type="submit" class="btn-style" value="로그인" id="login_button">
                 </div>
->>>>>>> 446b141922eb5657befa476dc57284c7302bfcff
             </div>
             <div class="flex">
                 <div class="link-box">
@@ -143,19 +119,8 @@
                     <a class="link" th:href="@{/user/findPwd}">비밀번호찾기</a>
                 </div>
             </div>
-<<<<<<< HEAD
-        </div>
-        <div class="flex">
-            <div class="link-box">
-                <a class="link" th:href="@{findID.html}">아이디찾기</a>
-            </div>
-            <div class="link-box">
-                <a class="link" th:href="@{findPwd.html}">비밀번호찾기</a>
-            </div>
-        </div>
-=======
+
         </form>
->>>>>>> 446b141922eb5657befa476dc57284c7302bfcff
     </div>
 
     <!-- footer 영역 -->

@@ -22,7 +22,9 @@ public class RandomClass {
                     tmp[i] = (char) (Math.random() * 26 + 'A');
                 }
             }
-            return new String(tmp);
+
+            // random 중복확인. db에서 값 확인하고 그리고 나서
+           return new String(tmp);
         }
         return "Error : size is required.";
     }

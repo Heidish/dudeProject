@@ -2,8 +2,18 @@ package com.dude.dudeproject.Controller;
 
 import com.dude.dudeproject.Repository.userRepository;
 import com.dude.dudeproject.Service.userDaoService;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.client.j2se.MatrixToImageConfig;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 
 @Controller
@@ -43,4 +53,6 @@ public class testController {
 //
 //        return "/afterlogin/mainPage";
 //    }
+
+
 }

@@ -4,7 +4,6 @@ import com.dude.dudeproject.Domain.service;
 import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.Service.userDaoService;
-import com.dude.dudeproject.System.ImageService;
 import com.dude.dudeproject.System.QRGenerator;
 import com.dude.dudeproject.System.RandomClass;
 import com.dude.dudeproject.System.SmsClass;
@@ -104,7 +103,8 @@ public class userController {
     }
 
     @PostMapping(value = "/login")
-    public String login(@ModelAttribute user user, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+    public String login(@ModelAttribute user user, HttpServletRequest request,
+                        HttpServletResponse response, Model model) throws Exception {
         String password = service.loginPwdChk(user);
 
         boolean pwdMatch = passwordEncoder.matches(user.getUser_pw(), password);

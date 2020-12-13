@@ -2,7 +2,6 @@ package com.dude.dudeproject.Controller;
 
 
 import com.dude.dudeproject.Domain.response;
-import com.dude.dudeproject.Domain.service;
 import com.dude.dudeproject.Service.responseDaoService;
 import com.dude.dudeproject.Service.serviceDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 @Controller
@@ -140,14 +142,14 @@ public class serviceController {
 //            os.write(binaryRead);
 //        }
 
-        outputStream.close();
+//        outputStream.close();
 
         model.addAttribute("qr_image", qr_image);
 //        model.addAttribute(" qr_id",user_id);
 
-        System.out.println("qr 삽입 할 id : " + service.getUser_id());
-        System.out.println("qr 삽입 할 target_no 값 : " + service.getTarget_qr_no());
-        System.out.println("qr 삽입 할 이미지 값 : " + service.getQr_image());
+//        System.out.println("qr 삽입 할 id : " + service.getUser_id());
+//        System.out.println("qr 삽입 할 target_no 값 : " + service.getTarget_qr_no());
+//        System.out.println("qr 삽입 할 이미지 값 : " + service.getQr_image());
 
 
     }

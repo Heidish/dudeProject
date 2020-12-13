@@ -50,8 +50,6 @@ public class userController {
         return "signup/login";
     }
 
-
-
     @GetMapping(value = "/preRegistration")
     public String preRegPage() {
 
@@ -129,7 +127,7 @@ public class userController {
             model.addAttribute("setTime", time);
         }
 
-        return "/afterLogin/mainPage";
+        return "afterLogin/mainPage";
 
 
     }
@@ -160,6 +158,7 @@ public class userController {
 
     @GetMapping(value = "/findPwd")
     public String findPwd() {
+
 
         return "/signup/findPwd";
     }

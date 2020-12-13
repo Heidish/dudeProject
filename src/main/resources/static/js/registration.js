@@ -177,7 +177,7 @@ $(function (){
                 check = check+1
             }
         }
-        if(check ==6){  // 6으로 변경 요망
+        if(check == 5){  // 6으로 변경 요망
             add()
         } else{
             alert("입력 사항을 다시 확인해주세요.")

@@ -5,8 +5,10 @@ import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Service.serviceDaoService;
 import com.dude.dudeproject.Service.userDaoService;
 import com.dude.dudeproject.System.ImageService;
+import com.dude.dudeproject.System.QRGenerator;
 import com.dude.dudeproject.System.RandomClass;
 import com.dude.dudeproject.System.SmsClass;
+import com.google.zxing.WriterException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 @Controller
@@ -64,7 +67,7 @@ public class userController {
     }
 
     @PostMapping(value = "/add", produces = MediaType.IMAGE_PNG_VALUE)
-    public String createUser(@ModelAttribute user user, @ModelAttribute service serviceVO) {
+    public String createUser(@ModelAttribute user user, @ModelAttribute service serviceVO) throws IOException, WriterException {
       //  System.out.println("암호화 전 비밀번호 = " + user.getUser_pw());
         String password = passwordEncoder.encode(user.getUser_pw()); // 비밀번호를 암호화
         user.setUser_pw(password);
@@ -73,10 +76,12 @@ public class userController {
 
         String random = RandomClass.numrandom(10);
         System.out.println("1");
-        byte[] qr_image = ImageService.getQRCodeImage(random,300,300);
-        System.out.println("qr 바이트 값"+qr_image);
+      //  byte[] qr_image = ImageService.getQRCodeImage(random,300,300);
+        QRGenerator.generateQRCodeImage(random);
+
+//        System.out.println("qr 바이트 값"+qr_image);
         System.out.println("2");
-        serviceVO.setQr_image(qr_image.toString());
+//        serviceVO.setQr_image(qr_image.toString());
 
         serviceVO.setUser_id(user.getUser_id());
         serviceVO.setTarget_qr_no(random);
@@ -248,16 +253,15 @@ public class userController {
         user.setUser_id((String)session.getAttribute("id"));
         user = service.readAccount(user);
 
-        model.addAttribute("user",user);
 
         serviceVO = serviceDao.findByService(user.getUser_id());
-        String qr= serviceVO.getQr_image();
-        byte[] qr_image = serviceVO.getQr_image().getBytes();
-    System.out.println(serviceVO.toString());
-    System.out.println(qr_image);
-//        String src = "/service/getImage/"+qr_image;
 
-        model.addAttribute("qr_image", qr);
+        String qr_num= serviceVO.getTarget_qr_no();
+    System.out.println(serviceVO.toString());
+    System.out.println(qr_num);
+
+        model.addAttribute("user", user);
+        model.addAttribute("qr_image", qr_num);
 
         return "/afterLogin/myAccount";
     }

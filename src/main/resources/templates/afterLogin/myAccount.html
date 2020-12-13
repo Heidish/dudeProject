@@ -82,7 +82,9 @@
                     </label>
                     <span th:text="${qr_image}"></span>
                     <div class="qr-img">
-                        <img class="qr-img1" src="/service/getImage111/${qr_image}"/>
+                        <img th:src="@{/service/qr(qr_image=${qr_image})}" />
+<!--                        <img th:src="@{/service/getImage(qr_image=${qr_image})}" />-->
+<!--                        <img class="qr-img1" th:src=@"{/service/getImage/${qr_image}}"  />-->
 <!--                        <img class="qr-img1" th:src="@{/service/setQRcode/} + ${qr_image}" />-->
 
                     </div>

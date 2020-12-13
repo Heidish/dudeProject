@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -109,6 +109,7 @@
               출차시간설정
             </div>
           </div>
+        </div>
           <div class="clock-cnt flex">
             <div class="clock-icon1" style="width: 50px;">
               <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-alarm" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +117,6 @@
               </svg>
             </div>
             <div class="clock-input">
-              <input type="text" name="time_set_home" th:value=""/>
               <!-- maxlength의 값을 5로지정하여 다섯자리 이상의 값이 등록되는것을 막는다. -->
                 <input type="text" class="timeBox" name="time_set_home" onKeyup="inputTimeColon(this);" placeholder="HH:MM" maxlength="5" th:value="${setTime}"/>
                 <div class="ajax" id="time-valid">

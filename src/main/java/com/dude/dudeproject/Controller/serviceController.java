@@ -4,10 +4,12 @@ package com.dude.dudeproject.Controller;
 import com.dude.dudeproject.Domain.response;
 import com.dude.dudeproject.Service.responseDaoService;
 import com.dude.dudeproject.Service.serviceDaoService;
+import org.apache.commons.io.IOUtils;
+import org.apache.maven.model.Model;
+import org.codehaus.plexus.components.io.fileselectors.FileInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,15 +68,16 @@ public class serviceController {
 //        outputStream.close();
 //    }
 
+
     @GetMapping(value="/getImage", produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody void byte2Image(@RequestParam(value="qr_image") String qr_image) throws FileNotFoundException, IOException {
     System.out.println("come?");
     System.out.println(qr_image);
         File file = new File("./../QRimages/"+qr_image+".png");
-        if(file.exists()){
+        if(file.exists()) {
             System.out.println("exist");
             BufferedImage image = ImageIO.read(file);
-            OutputStream out = new FileOutputStream("./../QR/"+qr_image+".png"); //파일로 출력하기위해 파일출력스트림 생성
+            OutputStream out = new FileOutputStream("./../QR/" + qr_image + ".png"); //파일로 출력하기위해 파일출력스트림 생성
             ImageIO.write(image, "png", out); //이미지 출력! , 이미지를 파일출력스트림을 통해 JPG타입으로 출력
             out.close();  //출력스트림 닫기
         }
@@ -85,7 +88,7 @@ public class serviceController {
     @GetMapping(path = "qr", produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody void setImageFileById(@RequestParam(value="qr_image") String qr_image, HttpServletResponse response)
             throws IOException {
-//        FileInfo fileInfo = fileService.getFileInfo(qr);
+//        FileInfo fileInfo = fileServicegetFileInfo(qr);
         // 파일 정보를 찾고
 //        StringBuilder sb = new StringBuilder("file://./../QRimages/");
         // 파일이 실제로 저장되어 있는 경로에
@@ -162,8 +165,16 @@ public class serviceController {
 //            os.write(binaryRead);
 //        }
 //
-//    }
+//        outputStream.close();
+//
+//        model.addAttribute("qr_image", qr_image);
+//        model.addAttribute(" qr_id",user_id);
 
+//        System.out.println("qr 삽입 할 id : " + service.getUser_id());
+//        System.out.println("qr 삽입 할 target_no 값 : " + service.getTarget_qr_no());
+//        System.out.println("qr 삽입 할 이미지 값 : " + service.getQr_image());
+//
+//    }
 
     //첫 출차요청으로 사용자가 들어왔을 때
     @GetMapping(value = "/response")
@@ -189,5 +200,6 @@ public class serviceController {
 
         return "/user/userResponseTrue";
     }
+
 
 }

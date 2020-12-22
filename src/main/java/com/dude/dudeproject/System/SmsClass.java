@@ -6,7 +6,6 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.json.simple.JSONObject;
 
 import java.util.HashMap;
-import java.util.Random;
 
 
 public class SmsClass {
@@ -14,9 +13,7 @@ public class SmsClass {
     private int certNumLength = 6;
 
     public String smsText(String phoneNumber) {
-     System.out.println(phoneNumber);
-//        String phoneNum = Integer.toString(phoneNumber);
-//     System.out.println(phoneNum);
+
         String api_key = "NCSDFJQCQZBN8HGD";
         String api_secret = "LXGWX1ODRGONQXLYUWYB1EBJ8E6AWC4D";
         Message coolsms = new Message(api_key, api_secret);
@@ -27,7 +24,6 @@ public class SmsClass {
             Double d = Math.random() * 9 + 1;
             certNum += Integer.toString(d.intValue());
         }
-    System.out.println(certNum);
         // 4 params(to, from, type, text) are mandatory. must be filled
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("to", phoneNumber); // 수신전화번호

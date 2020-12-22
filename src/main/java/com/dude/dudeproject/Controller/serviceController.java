@@ -4,9 +4,6 @@ package com.dude.dudeproject.Controller;
 import com.dude.dudeproject.Domain.response;
 import com.dude.dudeproject.Service.responseDaoService;
 import com.dude.dudeproject.Service.serviceDaoService;
-import org.apache.commons.io.IOUtils;
-import org.apache.maven.model.Model;
-import org.codehaus.plexus.components.io.fileselectors.FileInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -14,7 +11,6 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
@@ -116,6 +112,7 @@ public class serviceController {
 
         try {
             fis = new FileInputStream("./../QRimages/"+qr_image+".png");
+            System.out.println("fis 는 : " + fis);
             FileCopyUtils.copy(fis, out);
         } catch (Exception e) {
             e.printStackTrace();
@@ -129,7 +126,6 @@ public class serviceController {
             }
             out.flush();
         }
-
     }
 
 

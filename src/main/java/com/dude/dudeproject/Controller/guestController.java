@@ -1,7 +1,6 @@
 package com.dude.dudeproject.Controller;
 
 
-import com.dude.dudeproject.Domain.response;
 import com.dude.dudeproject.Domain.user;
 import com.dude.dudeproject.Repository.userRepository;
 import com.dude.dudeproject.Service.responseDaoService;
@@ -9,11 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/guest")
@@ -67,7 +63,7 @@ public class guestController {
     @GetMapping(value = "/guestResponse")
     public String guestResponseTrue(Model model){
         //qr에서 얻어온 사용자 아이디를 받아오는거로 바꿔야함
-        String id = "tjddms2565";
+        String id = "dudu1212";
         String status = service.getStatus(id);
         System.out.println("사용자가 선택한 응답 : " + status);
         if(status.equals("1")){  //가능

@@ -9,7 +9,6 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,7 +20,8 @@ public class QRGenerator {
         try {
             File file = null;
             // 큐알이미지를 저장할 디렉토리 지정
-            file = new File("./../QRimages");
+//            file = new File("./../QRimages");
+            file = new File("./src/main/resources/static/qrimages");
             if(!file.exists()) {
                 file.mkdirs();
             }
@@ -44,7 +44,8 @@ public class QRGenerator {
             BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix,matrixToImageConfig);
 
             // ImageIO를 사용한 바코드 파일쓰기
-            ImageIO.write(bufferedImage, "png", new File("./../QRimages/"+random+".png"));
+            ImageIO.write(bufferedImage, "png", new File("./src/main/resources/static/qrimages/"+random+".png"));
+//            ImageIO.write(bufferedImage, "png", new File("./src/main/resources/static/qrimages/"+random+".png"));
             System.out.println("finish");
         } catch (Exception e) {
             e.printStackTrace();

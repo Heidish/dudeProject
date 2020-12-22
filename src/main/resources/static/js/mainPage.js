@@ -8,7 +8,7 @@ function inputTimeColon(time) {
     if(replaceTime.length >= 3 && replaceTime.length < 5) {
 
         var hours = replaceTime.substring(0, 2);      // 선언한 변수 hours에 시간을 담는다.
-        var minute = replaceTime.substring(2, 4);    // 선언한 변수 minute에 분을 담는다.
+        var minute = replaceTime.substring(2, 4);     // 선언한 변수 minute에 분을 담는다.
 
         // isFinite함수를 사용하여 문자가 선언되었는지 확인한다.
         if(isFinite(hours + minute) == false) {
@@ -20,6 +20,7 @@ function inputTimeColon(time) {
         }else{
              $('#time-valid').text('')
         }
+
         // 두 변수의 시간과 분을 합쳐 입력한 시간이 24시가 넘는지를 체크한다.
         if(hours + minute > 2400) {
             $('#time-valid').text('시간은 24시를 넘길 수 없습니다.')
@@ -30,6 +31,7 @@ function inputTimeColon(time) {
         }else{
              $('#time-valid').text('')
         }
+
         // 입력한 분의 값이 60분을 넘는지 체크한다.
         if(minute > 60) {
             $('#time-valid').text('분은 60분을 넘길 수 없습니다.')

@@ -3,8 +3,11 @@ package com.dude.dudeproject.Controller;
 import com.dude.dudeproject.Repository.userRepository;
 import com.dude.dudeproject.Service.userDaoService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/test")
 public class testController {
 
     private userDaoService service;
@@ -12,6 +15,18 @@ public class testController {
 
     public testController(userDaoService service) {
         this.service = service;
+    }
+
+    @GetMapping("/404")
+    public String errorPage1() {
+
+        return "/exceptions/404error";
+    }
+
+    @GetMapping("/500")
+    public String errorPage2() {
+
+        return "/exceptions/500error";
     }
 
 //    @GetMapping("/")

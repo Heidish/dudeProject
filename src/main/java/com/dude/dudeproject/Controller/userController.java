@@ -180,10 +180,6 @@ public class userController {
         return "/afterLogin/mainPage";
     }
 
-
-
-
-
     @GetMapping(value = "/idCheck")
     public @ResponseBody int idCheck(@RequestParam("user_id") String user_id){
         int check = service.idCheck(user_id);
@@ -257,11 +253,12 @@ public class userController {
         serviceVO = serviceDao.findByService(user.getUser_id());
 
         String qr_num= serviceVO.getTarget_qr_no();
-    System.out.println(serviceVO.toString());
-    System.out.println(qr_num);
+        System.out.println(serviceVO.toString());
+        System.out.println(qr_num);
 
         model.addAttribute("user", user);
         model.addAttribute("qr_image", qr_num);
+        System.out.println("qr 넘버 : " + qr_num);
 
         return "/afterLogin/myAccount";
     }

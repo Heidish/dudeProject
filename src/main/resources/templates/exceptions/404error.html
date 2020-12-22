@@ -11,31 +11,26 @@
 <link rel="stylesheet" type="text/css" media="screen" href="/css/commons.css">
 <link rel="stylesheet" type="text/css" media="screen" href="/css/.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="/js/updateUserMobile.js"></script>
 <style>
     .title {
         font-weight: bold;
-        font-size: 25px;
+        font-size: 30px;
         height: 70px;
-        padding-top: 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding-top: 30px;
     }
-    .mobile-ttl {
-        width: 120px;
-        padding-top: 40px;
-    }
-    .input1 {
-        height: 30px;
-        margin-top: 35px;
-    }
-    .input2{
-        width: 220px;
-        height: 30px;
-        margin-top: 35px;
+    .warning {
+        height: 200px;
         text-align: center;
+        padding-top: 70px;
     }
-    .ajax {
-        font-size: 13px;
-        color: red;
+    .warning-info {
+        height: 120px;
+        padding-top: 10px;
+        text-align: center;
+        font-weight: 600;
+        color: rgb(75, 75, 75);
     }
     .btn {
         height: 100px;
@@ -52,43 +47,31 @@
 
     <!-- 상단 바 -->
     <div id="top-bar">
-        <a th:href="@{/user/main}">
-            <img class="logo" th:src="@{/images/top-logo.png}"/>
+        <a th:href="@{/user/login}">
+            <img class="logo" th:src="@{/images/logo.png}"/>
         </a>
     </div>
 
     <!-- contents 영역 -->
     <div class="contents">
         <div class="title flex">
-            전화번호 수정
+            페이지를 찾을 수 없습니다.
         </div>
-        <div class="mobile">
-            <div class="flex">
-                <div class="mobile-ttl">
-                    휴대폰 번호
-                </div>
-                <div class="mobile-input">
-                    <input type="text" class="input1" name="user_mobile"/>
-                    <div class="ajax" id="phone-valid">
-                    </div>
-                </div>
-            </div>
-            <div class="btn flex">
-                <button type="button" class="btn-style" id="validation_button">인증번호 전송</button>
-            </div>
-            <div class="mobile-input flex">
-                <input type="text" class="input2" name="validation_num" placeholder="인증번호를 입력해주세요."/>
-            </div>
+        <div class="warning">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+            </svg>
+        </div>
+        <div class="warning-info">
+            요청하신 페이지가 제거되었거나,<br/>
+            이름이 변경되었거나,<br/>
+            일시적으로 사용이 중단되었습니다.
         </div>
         <!-- 하단 확인 버튼 -->
         <div class="btn flex">
-            <button type="button" class="btn-style" id="verification-confirm">확인</button>
+            <button type="button" class="btn-style" onclick="location.href='/user/login'" >홈으로 돌아가기</button>
         </div>
-
-        <div class="btn flex">
-            <button type="button" class="btn-style" id="update">전화번호 수정</button>
-        </div>
-
     </div>
     
     <!-- footer 영역 -->
